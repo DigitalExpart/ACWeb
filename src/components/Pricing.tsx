@@ -1,0 +1,456 @@
+﻿import React, { useState, useCallback } from 'react';
+import { Button } from '@acweb/components/ui/button';
+import { Link } from 'react-router-dom';
+import { Check, X, ArrowRight, Star, Loader2, CheckCircle } from 'lucide-react';
+import { useUserType } from '@acweb/contexts/UserTypeContext';
+import { supabase } from '@acweb/integrations/supabase/client';
+import { toast } from 'sonner';
+
+interface DemoRequestFormData {
+  name: string;
+  organization: string;
+  email: string;
+  phoneNumber: string;
+  numberOfProviders: string;
+  additionalNotes: string;
+}
+
+const Pricing: React.FC = () => {
+  const [isAnnual, setIsAnnual] = useState(false);
+  const { userType } = useUserType();
+  
+  // Demo request form state
+  const [demoFormData, setDemoFormData] = useState<DemoRequestFormData>({
+    name: '',
+    organization: '',
+    email: '',
+    phoneNumber: '',
+    numberOfProviders: '',
+    additionalNotes: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  /**
+   * Handles smooth scrolling to the demo request form
+   * Security: Validates hash before scrolling
+   */
+  const handleScrollToDemo = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    const targetId = 'request-demo-pricing';
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Calculate total offset: header height + tabs height
+      const headerElement = document.querySelector('header');
+      const tabsElement = document.querySelector('[data-user-type-tabs]') as HTMLElement;
+      
+      const headerHeight = headerElement ? headerElement.offsetHeight : 160;
+      const tabsHeight = tabsElement ? tabsElement.offsetHeight : 88;
+      const totalOffset = headerHeight + tabsHeight;
+      
+      // Get element position
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+
+      // Smooth scroll to target with offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Update URL hash without triggering scroll
+      window.history.pushState(null, '', `#${targetId}`);
+    }
+  }, []);
+
+  const providerPlan = {
+    name: "Professional Plan",
+    monthlyPrice: 19.99,
+    annualPrice: 215.89,
+    description: "Complete credentialing solution for anesthesia providers",
+    features: [
+      "Upload and organize licenses, CEUs, diplomas, immunizations, insurance, and more",
+      "Expense Tax tracking & CPA export for all of your expenses",
+      "Automatically track expirations and get notified before deadlines",
+      "Secure, encrypted cloud storage",
+      "One-click credentialing packets",
+      "CEU tracking and dashboard overview",
+      "Access from any device",
+      "Auto-generate secure credentialing link or email",
+      "One-click send to employer (PDF bundle)",
+      "In-app expiration reminders for certifications and licenses",
+      "Priority support",
+      "Advanced analytics and reporting"
+    ],
+    cta: "Start Free Trial",
+    popular: true
+  };
+
+  const employerPlan = {
+    name: "Professional Plan",
+    monthlyPrice: 19.99,
+    description: "Complete credentialing solution for anesthesia groups",
+    features: [
+      "Provider onboarding and document request tools",
+      "Real-time expiration tracking for all licenses and credentials",
+      "Team-wide CEU status dashboard",
+      "One-click credentialing packets",
+      "Upload contracts, policy documents, and receive e-signatures",
+      "Secure, centralized credentialing database",
+      "Unlimited document requests and provider accounts",
+      "Admin dashboard with filters, search, and export tools",
+      "Integrated DocuSign for contracts and forms",
+      "One-click PDF email to credentialing staff",
+      "Credential packet branding (headers/logos)",
+      "Internal notes + credential status tracking",
+      "Priority support",
+      "Advanced analytics and compliance reporting"
+    ]
+  };
+
+  const pricingTiers = [
+    { providers: 10, monthly: 199.90, annual: 2158.90, savings: 239.90 },
+    { providers: 25, monthly: 499.75, annual: 5397.25, savings: 599.75 },
+    { providers: 50, monthly: 999.50, annual: 10794.50, savings: 1199.50 },
+    { providers: 100, monthly: 1999, annual: 21589, savings: 2399 }
+  ];
+
+  /**
+   * Handles demo request form submission
+   * Security: Validates inputs, sanitizes data, and sends emails via edge function
+   */
+  const handleDemoFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Security: Client-side validation
+    if (!demoFormData.name.trim() || !demoFormData.organization.trim() || !demoFormData.email.trim() || !demoFormData.phoneNumber.trim()) {
+      toast.error('Please fill in all required fields (Name, Organization, Email, and Phone Number).');
+      return;
+    }
+
+    // Security: Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(demoFormData.email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-demo-request', {
+        body: {
+          name: demoFormData.name.trim(),
+          organization: demoFormData.organization.trim(),
+          email: demoFormData.email.trim(),
+          phoneNumber: demoFormData.phoneNumber.trim(),
+          numberOfProviders: demoFormData.numberOfProviders.trim() || null,
+          additionalNotes: demoFormData.additionalNotes.trim() || null
+        }
+      });
+
+      if (error) {
+        console.error('Error submitting demo request:', error);
+        toast.error('Failed to submit your request. Please try again later or contact support@anesthesiaconnect.net.');
+        return;
+      }
+
+      if (data?.success) {
+        setSubmitSuccess(true);
+        toast.success('Demo request submitted successfully! Check your email for confirmation.');
+      } else {
+        throw new Error(data?.error || 'Unknown error occurred');
+      }
+    } catch (err) {
+      console.error('Error submitting demo request:', err);
+      toast.error('An error occurred while submitting your request. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (userType === 'provider') {
+    return (
+      <section id="pricing" className="section bg-white py-20">
+        <div className="container-ac">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-ac-text mb-4">Simple Plans That Grow With You</h2>
+            <p className="text-lg text-ac-text-light max-w-3xl mx-auto">
+              Choose the plan that fits your needs. Simple, transparent pricing for anesthesia professionals.
+            </p>
+          </div>
+
+          {/* Provider Plans */}
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-ac-text mb-4">For Providers</h3>
+              <p className="text-lg text-ac-text-light max-w-2xl mx-auto">
+                Manage your credentials. Track your CEUs. Send everything â€” instantly.
+              </p>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="w-full max-w-lg">
+                <div className="relative bg-white rounded-xl p-6 shadow-lg border-2 border-ac-primary sm:rounded-2xl sm:p-8">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-ac-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
+                      Our Only Plan
+                    </span>
+                  </div>
+                  
+                  <div className="text-center mb-8">
+                    <h4 className="text-2xl font-bold text-ac-text mb-2">{providerPlan.name}</h4>
+                    <p className="text-ac-text-light mb-6">{providerPlan.description}</p>
+                    <div className="mb-4">
+                      <span className="text-3xl sm:text-4xl font-bold text-ac-text">
+                        ${isAnnual ? providerPlan.annualPrice : providerPlan.monthlyPrice}
+                      </span>
+                      <span className="text-ac-text-light ml-2">
+                        /{isAnnual ? 'year' : 'month'}
+                      </span>
+                    </div>
+                    {isAnnual && (
+                      <p className="text-sm text-green-600 font-semibold">
+                        Save 15% with annual billing
+                      </p>
+                    )}
+                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-base sm:text-lg font-bold text-green-700 mb-1">
+                        $17.99/month if paid annually
+                      </p>
+                      <p className="text-sm text-green-600 font-semibold">
+                        Save $2/month when you pay $215.89/year
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-4 mb-8">
+                    {providerPlan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start">
+                        <Check className="h-5 w-5 text-ac-primary mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-ac-text-light">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link to="/register/provider">
+                    <Button className="w-full py-3 text-lg bg-ac-primary hover:bg-ac-primary/90 text-white">
+                      {providerPlan.cta}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <p className="text-sm text-ac-text-light">
+                âœ… Start with a 14-day free trial. No credit card required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="pricing" className="section bg-white py-20">
+      <div className="container-ac">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-ac-text mb-4">Simple Plans That Grow With You</h2>
+          <p className="text-lg text-ac-text-light max-w-3xl mx-auto">
+            Choose the plan that fits your needs. Simple, transparent pricing for anesthesia groups and employers.
+          </p>
+        </div>
+
+        {/* Employer Plans */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-ac-text mb-4">For Employers</h3>
+            <p className="text-lg text-ac-text-light max-w-2xl mx-auto">
+              Onboard faster. Stay compliant. Eliminate paperwork.
+            </p>
+          </div>
+
+          <div className="flex justify-center mb-12">
+            <div className="w-full max-w-lg">
+              <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-ac-primary sm:rounded-2xl sm:p-8">
+                <div className="text-center mb-8">
+                  <h4 className="text-2xl font-bold text-ac-text mb-2">{employerPlan.name}</h4>
+                  <p className="text-ac-text-light mb-6">{employerPlan.description}</p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {employerPlan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start">
+                      <Check className="h-5 w-5 text-ac-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-ac-text-light">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a href="#request-demo-pricing" onClick={handleScrollToDemo}>
+                  <Button className="w-full py-3 text-lg bg-ac-primary hover:bg-ac-primary/90 text-white">
+                    Request Demo & Pricing
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </a>
+
+                <p className="text-center text-ac-text-light text-sm sm:text-base mt-6 leading-relaxed px-2">
+                  Connect with our team to review platform capabilities, walk through a live product demo, and explore pricing options tailored to your anesthesia organization's workflow, compliance structure, and operational needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enterprise Solutions */}
+        <div id="request-demo-pricing" className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 sm:rounded-2xl sm:p-8 scroll-mt-[180px] md:scroll-mt-[240px]">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-ac-text mb-4">
+              Request Demo & Pricing
+            </h3>
+            <p className="text-lg text-ac-text-light max-w-2xl mx-auto">
+            Connect with our team to review platform capabilities, walk through a live product demo, and explore pricing options tailored to your anesthesia organizationâ€™s workflow, compliance structure, and operational needs.
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8 mb-8">
+            <div>
+              <h4 className="text-lg font-semibold text-ac-text mb-4">Custom plans include:</h4>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-ac-primary mr-3" />
+                  <span className="text-ac-text-light">Advanced analytics and credentialing compliance reporting</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-ac-primary mr-3" />
+                  <span className="text-ac-text-light">Dedicated account manager and support</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-ac-primary mr-3" />
+                  <span className="text-ac-text-light">Bulk document uploads and integration options</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-ac-primary mr-3" />
+                  <span className="text-ac-text-light">Internal messaging and compliance audit tools</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="h-5 w-5 text-ac-primary mr-3" />
+                  <span className="text-ac-text-light">Group-level permissions and multi-team support</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6">
+              <h4 className="text-lg font-semibold text-ac-text mb-4">Request Custom Pricing</h4>
+              {submitSuccess ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                  <h5 className="text-xl font-semibold text-ac-text mb-2">Request Submitted Successfully!</h5>
+                  <p className="text-ac-text-light mb-4">
+                    We've received your demo request. You will receive a confirmation email shortly, and one of our team members will reach out to you within 24 to 48 hours.
+                  </p>
+                  <Button 
+                    onClick={() => {
+                      setSubmitSuccess(false);
+                      setDemoFormData({
+                        name: '',
+                        organization: '',
+                        email: '',
+                        phoneNumber: '',
+                        numberOfProviders: '',
+                        additionalNotes: ''
+                      });
+                    }}
+                    variant="outline"
+                    className="mt-4"
+                  >
+                    Submit Another Request
+                  </Button>
+                </div>
+              ) : (
+                <form 
+                  onSubmit={handleDemoFormSubmit}
+                  className="space-y-4"
+                >
+                  <input 
+                    type="text" 
+                    placeholder="Name *" 
+                    required
+                    value={demoFormData.name}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, name: e.target.value }))}
+                    maxLength={100}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent"
+                  />
+                  <input 
+                    type="text" 
+                    placeholder="Organization *" 
+                    required
+                    value={demoFormData.organization}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, organization: e.target.value }))}
+                    maxLength={100}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Email *" 
+                    required
+                    value={demoFormData.email}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, email: e.target.value.toLowerCase().trim() }))}
+                    maxLength={255}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent"
+                  />
+                  <input 
+                    type="tel" 
+                    placeholder="Phone Number *" 
+                    required
+                    value={demoFormData.phoneNumber}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, phoneNumber: e.target.value }))}
+                    maxLength={20}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent"
+                  />
+                  <input 
+                    type="text" 
+                    placeholder="Number of Providers" 
+                    value={demoFormData.numberOfProviders}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, numberOfProviders: e.target.value }))}
+                    maxLength={50}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent"
+                  />
+                  <textarea 
+                    placeholder="Additional Notes" 
+                    rows={3}
+                    value={demoFormData.additionalNotes}
+                    onChange={(e) => setDemoFormData(prev => ({ ...prev, additionalNotes: e.target.value }))}
+                    maxLength={1000}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ac-primary focus:border-transparent resize-none"
+                  />
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-ac-primary hover:bg-ac-primary/90 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      'Submit Inquiry'
+                    )}
+                  </Button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;
