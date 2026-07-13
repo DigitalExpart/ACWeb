@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@acweb/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@acweb/components/ui/card';
@@ -501,9 +501,9 @@ const PublicJobsContent: React.FC = () => {
                     </p>
                     <Button
                       onClick={() => navigate('/login/provider')}
-                      variant="default"
+                      variant="outline"
                       size="lg"
-                      className="bg-white text-ac-primary hover:bg-blue-50"
+                      className="bg-white border-transparent text-ac-primary hover:bg-blue-50 hover:text-ac-primary"
                     >
                       <LogIn className="h-4 w-4 mr-2" />
                       Sign In or Register

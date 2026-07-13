@@ -1,4 +1,4 @@
-﻿
+
 import React, { useEffect, useRef } from 'react';
 import { UserTypeProvider, useUserType } from '@acweb/contexts/UserTypeContext';
 import Header from '@acweb/components/Header';
@@ -8,6 +8,7 @@ import PainPoints from '@acweb/components/PainPoints';
 import HowItWorks from '@acweb/components/HowItWorks';
 import DemoVideo from '@acweb/components/DemoVideo';
 import KeyFeatures from '@acweb/components/KeyFeatures';
+import EmployerFeatures from '@acweb/components/EmployerFeatures';
 import Testimonials from '@acweb/components/Testimonials';
 import Pricing from '@acweb/components/Pricing';
 import AboutTrust from '@acweb/components/AboutTrust';
@@ -47,8 +48,8 @@ const IndexContent: React.FC = () => {
 
   /**
    * Handle hash navigation on page load and hash changes.
-   * - #features â†’ provider tab + "For Anesthesia Providers" section
-   * - #request-demo-pricing â†’ employer tab + "Request Demo & Pricing" (only rendered for employers in Pricing.tsx)
+   * - #features → provider tab + "For Anesthesia Providers" section
+   * - #request-demo-pricing → employer tab + "Request Demo & Pricing" (only rendered for employers in Pricing.tsx)
    */
   useEffect(() => {
     const handleHashNavigation = () => {
@@ -124,13 +125,16 @@ const IndexContent: React.FC = () => {
       <UserTypeTabs />
       <main className="flex-grow pt-40 md:pt-52">
         <Hero />
-        <DemoVideo />
         <PainPoints />
         <HowItWorks />
+        {/* EmployerFeatures — the new dropdown accordion section */}
+        {userType === 'employer' && <EmployerFeatures />}
         {userType === 'employer' && <SecurityFeatures />}
         {userType === 'provider' && <SecurityFeatures />}
-        {userType === 'provider' && <KeyFeatures />}
-        {userType === 'provider' && <Testimonials />}
+        {userType === 'resident' && <SecurityFeatures />}
+        {/* KeyFeatures only shown for employers (providers use HowItWorks) */}
+        {userType === 'employer' && <KeyFeatures />}
+        {(userType === 'provider' || userType === 'resident') && <Testimonials />}
         <Pricing />
         <AboutTrust />
         <CTAStrip />

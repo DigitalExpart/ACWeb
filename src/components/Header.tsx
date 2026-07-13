@@ -1,4 +1,4 @@
-﻿
+
 import React, { useState, useCallback, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Facebook, Linkedin, Instagram } from 'lucide-react';
@@ -23,16 +23,7 @@ const isValidHash = (hash: string): boolean => {
 
 /**
  * Renders a responsive header component with navigation links and CTA buttons.
- * @example
- * Header()
- * Returns JSX for the header component
- * @returns {JSX.Element} The responsive header component.
- * @description
- *   - Utilizes hooks like useState to manage the mobile menu toggle state.
- *   - Includes navigation links for both mobile and desktop views.
- *   - Provides social media links with icons.
- *   - Displays CTA buttons for login/register and app store downloads.
- *   - Handles smooth scrolling to sections with proper offset for fixed header.
+ * Navigation: Providers | Employers | Residents & Programs | Jobs
  */
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,69 +67,15 @@ const Header: React.FC = () => {
   }, []);
 
   /**
-   * Handles smooth scrolling to a section with proper header offset
-   * Security: Validates hash before scrolling
+   * Handles tab switch + optional navigation
    */
-  const handleSmoothScroll = useCallback((e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-    e.preventDefault();
-    
-    // Security: Validate hash
-    if (!isValidHash(hash)) {
-      console.warn('Invalid hash anchor:', hash);
-      return;
-    }
-
-    // Close mobile menu if open
+  const handleSwitchTab = useCallback((type: 'provider' | 'employer' | 'resident') => {
     setIsOpen(false);
-
-    // Get the target element ID
-    const targetId = hash.startsWith('#') ? hash.slice(1) : hash;
-    
-    // Special handling for "features" link - navigate based on userType
-    if (targetId === 'features') {
-      // Determine target section based on current userType
-      const targetSectionId = userType === 'employer' ? 'how-it-works' : 'for-anesthesia-providers';
-      
-      // If userType is provider, switch to provider tab if not already there
-      if (userType !== 'employer' && setUserType && userType !== 'provider') {
-        setUserType('provider');
-      }
-      
-      // Navigate to home page if not already there
-      if (location.pathname !== '/') {
-        navigate('/');
-        // Wait for navigation to complete before scrolling
-        setTimeout(() => {
-          scrollToSection(targetSectionId);
-        }, 150);
-      } else {
-        // If already on home page, wait a bit for tab switch to render (if applicable), then scroll
-        setTimeout(() => {
-          scrollToSection(targetSectionId);
-        }, setUserType && userType !== 'provider' && userType !== 'employer' ? 100 : 50);
-      }
-    } else if (targetId === 'faq' || targetId === 'contact') {
-      // Special handling for FAQ link - navigate to appropriate FAQ section based on userType
-      const targetFaqId = userType === 'provider' ? 'provider-faqs' : userType === 'employer' ? 'employer-faqs' : 'provider-faqs';
-      
-      // Navigate to home page if not already there
-      if (location.pathname !== '/') {
-        navigate('/');
-        // Wait for navigation to complete before scrolling
-        setTimeout(() => {
-          scrollToSection(targetFaqId);
-        }, 150);
-      } else {
-        // If already on home page, scroll to appropriate FAQ section
-        setTimeout(() => {
-          scrollToSection(targetFaqId);
-        }, 50);
-      }
-    } else {
-      // For other sections, use standard scroll behavior
-      scrollToSection(targetId);
+    if (setUserType) setUserType(type);
+    if (location.pathname !== '/') {
+      navigate('/');
     }
-  }, [userType, setUserType, location.pathname, navigate, scrollToSection]);
+  }, [setUserType, location.pathname, navigate]);
 
   return (
     <header className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-[100] w-full shadow-sm" style={{ display: 'block' }}>
@@ -155,7 +92,31 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
+            <button
+              type="button"
+              onClick={() => handleSwitchTab('provider')}
+              className={`nav-link cursor-pointer font-medium transition-colors ${userType === 'provider' && location.pathname === '/' ? 'text-ac-primary' : ''}`}
+              aria-label="View Providers section"
+            >
+              Providers
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSwitchTab('employer')}
+              className={`nav-link cursor-pointer font-medium transition-colors ${userType === 'employer' && location.pathname === '/' ? 'text-ac-primary' : ''}`}
+              aria-label="View Employers section"
+            >
+              Employers
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSwitchTab('resident')}
+              className={`nav-link cursor-pointer font-medium transition-colors ${userType === 'resident' && location.pathname === '/' ? 'text-ac-primary' : ''}`}
+              aria-label="View Residents & Programs section"
+            >
+              Residents & Programs
+            </button>
             <Link 
               to="/jobs" 
               className="nav-link"
@@ -163,38 +124,6 @@ const Header: React.FC = () => {
             >
               Jobs
             </Link>
-            <a 
-              href="#features" 
-              className="nav-link cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#features')}
-              aria-label="Scroll to Features section"
-            >
-              Features
-            </a>
-            <a 
-              href="#pricing" 
-              className="nav-link cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#pricing')}
-              aria-label="Scroll to Pricing section"
-            >
-              Pricing
-            </a>
-            <a 
-              href="#about" 
-              className="nav-link cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#about')}
-              aria-label="Scroll to About section"
-            >
-              About
-            </a>
-            <a 
-              href="#faq" 
-              className="nav-link cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#faq')}
-              aria-label="Scroll to FAQ section"
-            >
-              FAQ
-            </a>
             <div className="flex items-center space-x-3">
               <a href="https://www.facebook.com/share/1BVFD3s9tJ" className="nav-link" aria-label="Facebook">
                 <Facebook size={18} />
@@ -237,6 +166,30 @@ const Header: React.FC = () => {
       {isOpen && (
         <div className="md:hidden bg-white py-4 border-t border-gray-200">
           <div className="container-ac space-y-4">
+            <button
+              type="button"
+              className="block w-full text-left nav-link py-2 cursor-pointer"
+              aria-label="View Providers section"
+              onClick={() => handleSwitchTab('provider')}
+            >
+              Providers
+            </button>
+            <button
+              type="button"
+              className="block w-full text-left nav-link py-2 cursor-pointer"
+              aria-label="View Employers section"
+              onClick={() => handleSwitchTab('employer')}
+            >
+              Employers
+            </button>
+            <button
+              type="button"
+              className="block w-full text-left nav-link py-2 cursor-pointer"
+              aria-label="View Residents & Programs section"
+              onClick={() => handleSwitchTab('resident')}
+            >
+              Residents & Programs
+            </button>
             <Link 
               to="/jobs" 
               className="block nav-link py-2"
@@ -245,38 +198,6 @@ const Header: React.FC = () => {
             >
               Jobs
             </Link>
-            <a 
-              href="#features" 
-              className="block nav-link py-2 cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#features')}
-              aria-label="Scroll to Features section"
-            >
-              Features
-            </a>
-            <a 
-              href="#pricing" 
-              className="block nav-link py-2 cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#pricing')}
-              aria-label="Scroll to Pricing section"
-            >
-              Pricing
-            </a>
-            <a 
-              href="#about" 
-              className="block nav-link py-2 cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#about')}
-              aria-label="Scroll to About section"
-            >
-              About
-            </a>
-            <a 
-              href="#faq" 
-              className="block nav-link py-2 cursor-pointer" 
-              onClick={(e) => handleSmoothScroll(e, '#faq')}
-              aria-label="Scroll to FAQ section"
-            >
-              FAQ
-            </a>
             <div className="flex items-center space-x-6 py-2">
               <a href="https://www.facebook.com/share/1BVFD3s9tJ" className="nav-link" aria-label="Facebook">
                 <Facebook size={20} />
@@ -311,7 +232,7 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      {/* CTA buttons bar */}
+      {/* CTA buttons bar — desktop */}
       <div className="bg-gray-50 py-3 border-t border-gray-200 hidden md:block">
         <div className="container-ac flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center space-x-4">

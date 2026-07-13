@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type UserType = 'provider' | 'employer';
+export type UserType = 'provider' | 'employer' | 'resident';
 
 interface UserTypeContextType {
   userType: UserType;

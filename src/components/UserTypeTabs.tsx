@@ -1,7 +1,7 @@
-﻿import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
-import { Users, FileText, Briefcase } from 'lucide-react';
+import { Users, FileText, Briefcase, GraduationCap } from 'lucide-react';
 
 const UserTypeTabs: React.FC = () => {
   const { userType, setUserType } = useUserType();
@@ -48,11 +48,11 @@ const UserTypeTabs: React.FC = () => {
   /**
    * Handles tab click with security validation
    * Only allows valid user types
-   * Navigates to home page when clicking Provider/Employer tabs from /jobs page
+   * Navigates to home page when clicking Provider/Employer/Resident tabs from /jobs page
    */
-  const handleTabClick = (type: 'provider' | 'employer') => {
+  const handleTabClick = (type: 'provider' | 'employer' | 'resident') => {
     // Security: Validate user type before setting
-    if (type === 'provider' || type === 'employer') {
+    if (type === 'provider' || type === 'employer' || type === 'resident') {
       setUserType(type);
       // If on jobs page, navigate to home to show the selected tab content
       if (isJobsPage) {
@@ -74,7 +74,7 @@ const UserTypeTabs: React.FC = () => {
             <button
               type="button"
               onClick={() => handleTabClick('provider')}
-              className={`flex items-center px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
                 !isJobsPage && userType === 'provider'
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -83,13 +83,13 @@ const UserTypeTabs: React.FC = () => {
               aria-pressed={!isJobsPage && userType === 'provider'}
             >
               <FileText className="h-5 w-5 mr-2" />
-              <span className="hidden sm:inline">For Providers</span>
+              <span className="hidden sm:inline">Providers</span>
               <span className="sm:hidden">Providers</span>
             </button>
             <button
               type="button"
               onClick={() => handleTabClick('employer')}
-              className={`flex items-center px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
                 !isJobsPage && userType === 'employer'
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -98,13 +98,28 @@ const UserTypeTabs: React.FC = () => {
               aria-pressed={!isJobsPage && userType === 'employer'}
             >
               <Users className="h-5 w-5 mr-2" />
-              <span className="hidden sm:inline">For Employers</span>
+              <span className="hidden sm:inline">Employers</span>
               <span className="sm:hidden">Employers</span>
             </button>
             <button
               type="button"
+              onClick={() => handleTabClick('resident')}
+              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
+                !isJobsPage && userType === 'resident'
+                  ? 'bg-white text-ac-primary shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              aria-label="Switch to Residents & Programs view"
+              aria-pressed={!isJobsPage && userType === 'resident'}
+            >
+              <GraduationCap className="h-5 w-5 mr-2" />
+              <span className="hidden sm:inline">Residents & Programs</span>
+              <span className="sm:hidden">Residents</span>
+            </button>
+            <button
+              type="button"
               onClick={() => navigate('/jobs')}
-              className={`flex items-center px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
                 isJobsPage
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -113,8 +128,7 @@ const UserTypeTabs: React.FC = () => {
               aria-pressed={isJobsPage}
             >
               <Briefcase className="h-5 w-5 mr-2" />
-              <span className="hidden sm:inline">Jobs</span>
-              <span className="sm:hidden">Jobs</span>
+              <span>Jobs</span>
             </button>
           </div>
         </div>
