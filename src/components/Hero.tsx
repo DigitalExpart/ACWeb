@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Button } from "@acweb/components/ui/button";
-import { ArrowRight, Play, CheckCircle, Lock, Zap, Bell, Cloud } from "lucide-react";
+import { ArrowRight, Play, CheckCircle, Lock, Zap, Bell, Cloud, GraduationCap, Users, Calendar, Folder, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUserType } from "@acweb/contexts/UserTypeContext";
 import { SUPABASE_URL } from "@acweb/integrations/supabase/client";
@@ -167,103 +167,138 @@ const Hero = () => {
   if (userType === 'resident') {
     return (
       <div className="relative overflow-hidden bg-[#0a1628]">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f9fff' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
+        {/* Subtle background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628]"></div>
 
-        <div className="relative pb-12 pt-8 sm:pb-20 sm:pt-12 lg:pb-28 lg:pt-16">
+        <div className="relative pb-12 pt-12 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20">
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-              {/* Left: copy */}
-              <div>
-                <div className="inline-flex items-center bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-1.5 mb-6">
-                  <span className="text-blue-300 text-sm font-semibold tracking-wide uppercase">For Residents & Programs</span>
-                </div>
-
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                  Anesthesia Connect
-                  <br />
-                  <span className="text-blue-400">Gives Back.</span>
+            
+            {/* Top 2-Column Section */}
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+              
+              {/* Left Column: Text & CTAs */}
+              <div className="text-center lg:text-left w-full">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-5 tracking-tight">
+                  Anesthesia<br />Connect<br />
+                  <span className="text-[#1a56db]">Gives Back.</span>
                 </h1>
-
-                <p className="text-blue-100 text-base sm:text-lg leading-relaxed mb-6 max-w-xl">
-                  We support the next generation of anesthesia professionals. Anesthesia Connect is free for anesthesia residents — store credentials, track CEUs, and share documents with future employers, all in one secure platform.
+                <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+                  We support the next generation of anesthesia professionals with the tools they need to learn, grow, and succeed.
                 </p>
 
-                <div className="bg-blue-600/20 border border-blue-500/30 rounded-xl p-5 mb-8">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-white font-bold text-lg">100 complimentary free for all students, residents and programs.</p>
-                      <p className="text-blue-200 text-sm mt-1">No credit card required. No strings attached.</p>
-                    </div>
+                {/* Complimentary Card */}
+                <div className="bg-white rounded-xl p-5 mb-8 shadow-xl w-full max-w-md mx-auto lg:mx-0 flex items-center gap-5 border border-gray-100">
+                  <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="h-7 w-7 text-[#1a56db]" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-[#1a56db] font-extrabold text-sm sm:text-base tracking-wide mb-0.5">
+                      100% COMPLIMENTARY
+                    </h3>
+                    <p className="text-gray-800 font-semibold text-sm sm:text-base leading-snug">
+                      Free for all anesthesia students, residents and programs.
+                    </p>
                   </div>
                 </div>
 
-                {/* Feature bullets */}
-                <div className="space-y-3 mb-8">
-                  {[
-                    "Store licenses, certifications, and credentials",
-                    "Track CEUs and expiration dates automatically",
-                    "Send credentialing packets to employers instantly",
-                    "E-signature for contracts and forms",
-                    "Reimbursement requests built in",
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                      <span className="text-blue-100 text-sm">{item}</span>
-                    </div>
-                  ))}
+                {/* Buttons */}
+                <div className="w-full max-w-md mx-auto lg:mx-0 flex flex-col sm:flex-row gap-4 mb-4">
+                  <a href="#request-demo-pricing" onClick={handleBookDemoClick} className="w-full sm:w-1/2">
+                    <button
+                      style={{ color: '#ffffff', backgroundColor: '#0055ff' }}
+                      className="inline-flex items-center justify-center w-full rounded-xl px-6 py-3.5 text-sm font-bold shadow-md hover:bg-blue-600 transition-colors"
+                    >
+                      Request a Demo
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </button>
+                  </a>
+                  <Link to="/register/provider?student=true" className="w-full sm:w-1/2">
+                    <button
+                      style={{ color: '#ffffff', backgroundColor: '#0f172a' }}
+                      className="inline-flex items-center justify-center w-full rounded-xl px-6 py-3.5 text-sm font-bold border border-gray-700 shadow-sm hover:bg-gray-800 transition-colors"
+                    >
+                      Sign Up Free
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </button>
+                  </Link>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/register/provider?student=true">
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-500 text-white px-7 py-4 text-base font-semibold w-full sm:w-auto">
-                      Sign Up Free
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <button
-                    style={{ color: '#ffffff', backgroundColor: 'transparent' }}
-                    className="inline-flex items-center justify-center h-11 rounded-md border border-white/40 px-7 py-4 text-base font-semibold w-full sm:w-auto hover:bg-white/10 transition-colors duration-200"
-                    onClick={handleWatchDemoClick}
-                  >
-                    <Play className="mr-2 h-5 w-5" />
-                    Watch Demo
-                  </button>
+                {/* No credit card required */}
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-gray-400">
+                  <Shield className="h-4 w-4" />
+                  <span className="text-sm font-medium">No credit card required.</span>
                 </div>
               </div>
 
-              {/* Right: screenshots side-by-side */}
-              <div className="flex items-end justify-center gap-6 lg:gap-8">
-                <div className="relative flex-shrink-0 w-40 sm:w-52">
-                  <div className="bg-[#1a2744] rounded-3xl p-2 shadow-2xl border border-white/10">
+              {/* Right Column: Devices Mockup */}
+              <div className="w-full relative flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-lg lg:mr-4 flex items-center">
+                  {/* Laptop Mockup */}
+                  <div className="relative w-[80%] z-10">
                     <img
-                      src={`${SUPABASE_URL}/storage/v1/object/public/website/provider.png`}
-                      alt="Anesthesia Connect mobile app"
-                      className="w-full rounded-2xl object-cover"
+                      src="/media__1784002873643.png"
+                      alt="Anesthesia Connect Portal on Laptop"
+                      className="w-full h-auto object-contain drop-shadow-2xl"
                     />
                   </div>
-                </div>
-                <div className="relative flex-shrink-0 flex-1 max-w-sm">
-                  <div className="bg-[#1a2744] rounded-xl p-2 shadow-2xl border border-white/10">
-                    <div className="bg-gray-200 rounded-t-lg h-4 flex items-center px-2 gap-1">
-                      <div className="w-2 h-2 rounded-full bg-red-400"></div>
-                      <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                    </div>
+                  {/* Mobile App Mockup Overlay */}
+                  <div className="absolute w-[35%] right-0 z-20 bottom-[-5%] lg:bottom-[-8%] transform translate-x-4">
                     <img
-                      src={`${SUPABASE_URL}/storage/v1/object/public/website/employer.png`}
-                      alt="Anesthesia Connect dashboard"
-                      className="w-full rounded-b-lg object-cover"
+                      src="/media__1784002945896.png"
+                      alt="Anesthesia Connect Mobile App on Phone"
+                      className="w-full h-auto object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
               </div>
 
             </div>
+
+            {/* Bottom Section: Features White Block */}
+            <div className="bg-white rounded-2xl p-8 sm:p-10 w-full shadow-2xl border border-gray-100">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] text-center leading-tight mb-10">
+                Everything You Need. All in One Place.
+              </h2>
+              
+              <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div className="flex flex-col items-center md:items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <Users className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 font-bold text-lg mb-2">Manage Residents</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                      Easily manage resident profiles, clinical assignments, rotation requirements, and more.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center md:items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <Calendar className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 font-bold text-lg mb-2">Schedule Management</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                      Create, assign, and manage resident schedules across multiple sites and rotations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center md:items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <Folder className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 font-bold text-lg mb-2">Document Management</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                      Store, organize, and track all resident documents in one secure, cloud-based location.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

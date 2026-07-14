@@ -25,7 +25,12 @@ import {
   Shield,
   ShieldAlert,
   Cloud,
-  ChevronDown
+  ChevronDown,
+  Wallet,
+  ClipboardCheck,
+  BarChart2,
+  MoreHorizontal,
+  HeartHandshake
 } from 'lucide-react';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
 
@@ -36,151 +41,268 @@ const PainPoints: React.FC = () => {
   if (userType === 'provider' || userType === 'resident') {
     return (
       <div className="bg-white">
-        {/* ── Everything you need section ─────────────────────────────────── */}
-        <section className="pt-16 pb-12 sm:pt-20">
-          <div className="container-ac text-center px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
-              Everything you need.
-              <br />
-              <span className="text-blue-600">All in one secure platform.</span>
-            </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-              Anesthesia Connect is your digital wallet for storing and managing every credential, license, certification, and document you need throughout your career — all in one secure place.
-            </p>
 
-            {/* NEW Dark Blue Badge Banner */}
-            <div className="max-w-3xl mx-auto bg-[#051e3f] text-white rounded-xl p-4 sm:p-5 flex items-center justify-between shadow-md hover:bg-[#07254c] transition-colors cursor-pointer group text-left">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <span className="bg-white text-[#051e3f] text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider self-start sm:self-auto">
-                  NEW
-                </span>
-                <div>
-                  <span className="font-bold text-sm sm:text-base mr-2">Expense Tax Tracking &amp; CPA Export</span>
-                  <span className="text-blue-200 text-xs sm:text-sm block sm:inline mt-0.5 sm:mt-0">
-                    Track expenses. Maximize deductions. Export with ease.
-                  </span>
-                </div>
-              </div>
-              <ChevronRight className="h-5 w-5 text-blue-400 group-hover:translate-x-1 transition-transform flex-shrink-0 ml-4" />
-            </div>
-          </div>
-        </section>
-
-        {/* ── WHAT YOU CAN DO 9-Icon Grid ────────────────────────────────── */}
-        <section className="py-12 sm:py-16 bg-white" id="for-anesthesia-providers">
-          <div className="container-ac px-4 sm:px-6">
-            <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-10">
-              WHAT YOU CAN DO
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                { icon: <FileText className="h-6 w-6 text-blue-600" />, title: "Store All Credentials", desc: "Licenses, certifications, CEUs, immunizations, and more." },
-                { icon: <Send className="h-6 w-6 text-blue-600" />, title: "Share Instantly", desc: "Send docs to any employer with a click of a button." },
-                { icon: <Bell className="h-6 w-6 text-blue-600" />, title: "Expiration Alerts", desc: "Never miss a renewal with smart 30-day alerts." },
-                { icon: <Edit3 className="h-6 w-6 text-blue-600" />, title: "E-Sign & Contracts", desc: "Review and e-sign contracts securely in-app." },
-                { icon: <DollarSign className="h-6 w-6 text-blue-600" />, title: "Reimbursement Requests", desc: "Submit and track reimbursement requests." },
-                { icon: <Briefcase className="h-6 w-6 text-blue-600" />, title: "Tax & Mileage Tracking", desc: "Track expenses and export for tax season." },
-                { icon: <BookOpen className="h-6 w-6 text-blue-600" />, title: "CEU Tracking", desc: "Track and organize your CEUs all in one place." },
-                { icon: <Users className="h-6 w-6 text-blue-600" />, title: "Integrated Job Board", desc: "Find anesthesia job opportunities tailored to you." },
-                { icon: <MessageSquare className="h-6 w-6 text-blue-600" />, title: "Provider Messaging", desc: "Secure in-app messaging with employers." },
-              ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-left">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                    {item.icon}
-                  </div>
-                  <h4 className="font-bold text-gray-900 text-base mb-1.5">{item.title}</h4>
-                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── HOW IT WORKS 3-Step Flow ────────────────────────────────────── */}
-        <section className="py-12 sm:py-16 bg-white">
-          <div className="container-ac px-4 sm:px-6">
-            <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-12">
-              HOW IT WORKS
-            </h3>
-            
-            <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-8 max-w-4xl mx-auto">
-              {[
-                { step: "1", title: "Upload", desc: "Add your credentials and documents." },
-                { step: "2", title: "Organize", desc: "We keep everything in one secure place." },
-                { step: "3", title: "Share", desc: "Send to employers instantly." }
-              ].map((item, idx) => (
-                <React.Fragment key={idx}>
-                  <div className="flex-1 text-center flex flex-col items-center">
-                    <div className="w-14 h-14 bg-blue-50 border border-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg mb-3 shadow-inner">
-                      {item.step}
+        {/* ── RESIDENT/STUDENT SPECIFIC SECTIONS ─────────────────────────── */}
+        {userType === 'resident' && (
+          <>
+            {/* Wallet Section */}
+            <section className="py-12 bg-white">
+              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+                <div className="bg-[#f8faff] rounded-3xl p-8 sm:p-12 border border-blue-50/50">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 mb-8 text-center lg:text-left">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Wallet className="h-8 w-8 text-blue-600" />
                     </div>
-                    <h4 className="font-bold text-gray-900 text-lg mb-1">{item.title}</h4>
-                    <p className="text-sm text-gray-500 max-w-xs">{item.desc}</p>
-                  </div>
-                  {idx < 2 && (
-                    <div className="hidden md:flex items-center justify-center h-14 text-gray-300 text-2xl font-bold self-start mt-0">
-                      →
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] leading-tight mb-3">
+                        Residents Get Their Own Complimentary Digital Anesthesia Wallet
+                      </h3>
+                      <p className="text-gray-700 font-medium leading-relaxed max-w-3xl">
+                        Residents receive a free digital wallet to securely store, manage, and share important credentials and documents.
+                      </p>
                     </div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── For Anesthesia Programs Green Banner ─────────────────────────── */}
-        <section className="py-8 bg-white">
-          <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
-            <div className="bg-[#f0faf5] border border-[#d1ebd9] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-              <div className="flex items-center gap-4 text-left">
-                <div className="w-14 h-14 bg-[#e2f5e9] rounded-full flex items-center justify-center flex-shrink-0 text-emerald-600 border border-[#b2e0c2]">
-                  <GraduationCap className="h-7 w-7" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-emerald-900 text-lg">For Anesthesia Programs</h4>
-                  <p className="text-sm text-emerald-700 mt-0.5">
-                    Manage clinical rotations, student compliance, and document tracking — all in one platform.
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 ml-0 lg:ml-28 mb-8">
+                    {[
+                      "Licenses & Certifications (BLS, ACLS, PALS)",
+                      "Immunizations",
+                      "TB Test Results",
+                      "CEU / CME Tracking",
+                      "Clinical Rotation Documents",
+                      "School & Program Documents",
+                      "And more..."
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className="bg-blue-600 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0">
+                          <CheckCircle className="h-3 w-3 text-white" />
+                        </div>
+                        <span className="text-[#0a1628] font-bold text-sm sm:text-base">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <p className="text-center font-bold text-[#0a1628] text-sm sm:text-base mt-8">
+                    Always accessible. Always up to date.<br className="hidden sm:block" /> Always in your control.
                   </p>
                 </div>
               </div>
-              <Link to="/programs" className="w-full md:w-auto">
-                <Button variant="outline" className="w-full bg-white hover:bg-emerald-50 text-emerald-700 hover:text-emerald-700 border border-[#b2e0c2] font-semibold px-6 py-3 shadow-sm flex items-center justify-center gap-2">
-                  Learn More
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        {/* ── TRUSTED & SECURE Badges Banner ─────────────────────────────── */}
-        <section className="py-12 bg-white">
-          <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
-            <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-8">
-              TRUSTED &amp; SECURE
-            </h3>
-            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-                {[
-                  { icon: <Lock className="h-5 w-5 text-gray-500" />, title: "AES-256", desc: "Encryption" },
-                  { icon: <Shield className="h-5 w-5 text-gray-500" />, title: "TLS 1.3", desc: "Security" },
-                  { icon: <Users className="h-5 w-5 text-gray-500" />, title: "SOC 2 Type 2", desc: "Compliant" },
-                  { icon: <Cloud className="h-5 w-5 text-gray-500" />, title: "DDoS", desc: "Protection" }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 justify-center">
-                    <div className="w-10 h-10 bg-white rounded-lg border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                      {item.icon}
+            {/* Partner Section */}
+            <section className="py-8 bg-white">
+              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+                <div className="bg-[#051024] rounded-3xl p-8 sm:p-12 text-white">
+                  <div className="text-center mb-10">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold mb-4">
+                      More Than a Platform.<br />
+                      <span className="text-blue-500">A Partner in Your Journey.</span>
+                    </h3>
+                    <p className="text-gray-300 max-w-lg mx-auto font-medium">
+                      Residents gain access to all the powerful features of Anesthesia Connect—at no cost.
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-3 max-w-4xl mx-auto">
+                    <div className="flex flex-col items-center justify-center text-center p-6 border-b border-r border-blue-900/50">
+                      <Shield className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">Compliance<br />Tracking</p>
                     </div>
-                    <div className="text-left">
-                      <p className="text-sm font-bold text-gray-900 leading-tight">{item.title}</p>
-                      <p className="text-xs text-gray-400">{item.desc}</p>
+                    <div className="flex flex-col items-center justify-center text-center p-6 border-b border-blue-900/50 md:border-r">
+                      <Bell className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">Expiration<br />Alerts</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center text-center p-6 border-b border-r border-blue-900/50 md:border-r-0">
+                      <MessageSquare className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">Secure<br />Messaging</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center text-center p-6 border-b border-blue-900/50 md:border-b-0 md:border-r">
+                      <ClipboardCheck className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">Task<br />Management</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center text-center p-6 border-r border-blue-900/50 md:border-r">
+                      <BarChart2 className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">Reports &<br />Insights</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center text-center p-6">
+                      <MoreHorizontal className="h-8 w-8 text-white mb-3" strokeWidth={1.5} />
+                      <p className="font-semibold text-sm">...and more!</p>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
+
+            {/* Free for Students Section */}
+            <section className="py-8 bg-white mb-12">
+              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+                <div className="bg-[#f8faff] rounded-3xl p-8 sm:p-12 border border-blue-50/50">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0">
+                        <HeartHandshake className="h-8 w-8 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] leading-tight mb-3">
+                          Free for Residents.<br />Free for Programs.
+                        </h3>
+                        <p className="text-gray-700 font-semibold leading-relaxed max-w-xl">
+                          Anesthesia Connect is complimentary for all anesthesia residents and anesthesia programs—no fees, ever.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="w-full lg:w-auto flex-shrink-0 flex flex-col items-center gap-3">
+                      <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-3">
+                        <a href="#request-demo-pricing" className="w-full sm:w-auto">
+                          <button
+                            style={{ color: '#ffffff', backgroundColor: '#0055ff' }}
+                            className="inline-flex items-center justify-center w-full sm:w-48 rounded-xl px-6 py-4 text-sm font-bold shadow-md hover:bg-blue-600 transition-colors"
+                          >
+                            Request a Demo
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </button>
+                        </a>
+                        <Link to="/register/provider?student=true" className="w-full sm:w-auto">
+                          <button
+                            style={{ color: '#0055ff', backgroundColor: '#ffffff' }}
+                            className="inline-flex items-center justify-center w-full sm:w-48 rounded-xl px-6 py-4 text-sm font-bold border border-blue-200 shadow-sm hover:bg-gray-50 transition-colors"
+                          >
+                            Sign Up Free
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </button>
+                        </Link>
+                      </div>
+                      <p className="text-gray-500 font-semibold text-xs mt-1">
+                        No credit card required.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ── PROVIDER-ONLY SECTIONS ───────────────────────────────────────── */}
+        {userType === 'provider' && (
+          <>
+            {/* ── WHAT YOU CAN DO 9-Icon Grid ──────────────────────────────── */}
+            <section className="py-12 sm:py-16 bg-white" id="for-anesthesia-providers">
+              <div className="container-ac px-4 sm:px-6">
+                <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-10">
+                  WHAT YOU CAN DO
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                  {[
+                    { icon: <FileText className="h-6 w-6 text-blue-600" />, title: "Store All Credentials", desc: "Licenses, certifications, CEUs, immunizations, and more." },
+                    { icon: <Send className="h-6 w-6 text-blue-600" />, title: "Share Instantly", desc: "Send docs to any employer with a click of a button." },
+                    { icon: <Bell className="h-6 w-6 text-blue-600" />, title: "Expiration Alerts", desc: "Never miss a renewal with smart 30-day alerts." },
+                    { icon: <Edit3 className="h-6 w-6 text-blue-600" />, title: "E-Sign & Contracts", desc: "Review and e-sign contracts securely in-app." },
+                    { icon: <DollarSign className="h-6 w-6 text-blue-600" />, title: "Reimbursement Requests", desc: "Submit and track reimbursement requests." },
+                    { icon: <Briefcase className="h-6 w-6 text-blue-600" />, title: "Tax & Mileage Tracking", desc: "Track expenses and export for tax season." },
+                    { icon: <BookOpen className="h-6 w-6 text-blue-600" />, title: "CEU Tracking", desc: "Track and organize your CEUs all in one place." },
+                    { icon: <Users className="h-6 w-6 text-blue-600" />, title: "Integrated Job Board", desc: "Find anesthesia job opportunities tailored to you." },
+                    { icon: <MessageSquare className="h-6 w-6 text-blue-600" />, title: "Provider Messaging", desc: "Secure in-app messaging with employers." },
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-left">
+                      <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                        {item.icon}
+                      </div>
+                      <h4 className="font-bold text-gray-900 text-base mb-1.5">{item.title}</h4>
+                      <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* ── HOW IT WORKS 3-Step Flow ─────────────────────────────────── */}
+            <section className="py-12 sm:py-16 bg-white">
+              <div className="container-ac px-4 sm:px-6">
+                <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-12">
+                  HOW IT WORKS
+                </h3>
+                <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-8 max-w-4xl mx-auto">
+                  {[
+                    { step: "1", title: "Upload", desc: "Add your credentials and documents." },
+                    { step: "2", title: "Organize", desc: "We keep everything in one secure place." },
+                    { step: "3", title: "Share", desc: "Send to employers instantly." }
+                  ].map((item, idx) => (
+                    <React.Fragment key={idx}>
+                      <div className="flex-1 text-center flex flex-col items-center">
+                        <div className="w-14 h-14 bg-blue-50 border border-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg mb-3 shadow-inner">
+                          {item.step}
+                        </div>
+                        <h4 className="font-bold text-gray-900 text-lg mb-1">{item.title}</h4>
+                        <p className="text-sm text-gray-500 max-w-xs">{item.desc}</p>
+                      </div>
+                      {idx < 2 && (
+                        <div className="hidden md:flex items-center justify-center h-14 text-gray-300 text-2xl font-bold self-start mt-0">
+                          →
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* ── For Anesthesia Programs Green Banner ─────────────────────── */}
+            <section className="py-8 bg-white">
+              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+                <div className="bg-[#f0faf5] border border-[#d1ebd9] rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+                  <div className="flex items-center gap-4 text-left">
+                    <div className="w-14 h-14 bg-[#e2f5e9] rounded-full flex items-center justify-center flex-shrink-0 text-emerald-600 border border-[#b2e0c2]">
+                      <GraduationCap className="h-7 w-7" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-emerald-900 text-lg">For Anesthesia Programs</h4>
+                      <p className="text-sm text-emerald-700 mt-0.5">
+                        Manage clinical rotations, student compliance, and document tracking — all in one platform.
+                      </p>
+                    </div>
+                  </div>
+                  <Link to="/programs" className="w-full md:w-auto">
+                    <Button variant="outline" className="w-full bg-white hover:bg-emerald-50 text-emerald-700 hover:text-emerald-700 border border-[#b2e0c2] font-semibold px-6 py-3 shadow-sm flex items-center justify-center gap-2">
+                      Learn More
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
+            {/* ── TRUSTED & SECURE Badges Banner ───────────────────────────── */}
+            <section className="py-12 bg-white">
+              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+                <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-8">
+                  TRUSTED &amp; SECURE
+                </h3>
+                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                    {[
+                      { icon: <Lock className="h-5 w-5 text-gray-500" />, title: "AES-256", desc: "Encryption" },
+                      { icon: <Shield className="h-5 w-5 text-gray-500" />, title: "TLS 1.3", desc: "Security" },
+                      { icon: <Users className="h-5 w-5 text-gray-500" />, title: "SOC 2 Type 2", desc: "" },
+                      { icon: <Cloud className="h-5 w-5 text-gray-500" />, title: "DDoS", desc: "Protection" }
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 justify-center">
+                        <div className="w-10 h-10 bg-white rounded-lg border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
+                          {item.icon}
+                        </div>
+                        <div className="text-left">
+                          <p className="text-sm font-bold text-gray-900 leading-tight">{item.title}</p>
+                          <p className="text-xs text-gray-400">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
       </div>
     );
   }

@@ -7,6 +7,14 @@ import Privacy from '@acweb/pages/Privacy';
 import Cookies from '@acweb/pages/Cookies';
 import EULA from '@acweb/pages/EULA';
 import PublicJobs from '@acweb/pages/PublicJobs';
+import Credentialing from '@acweb/pages/Credentialing';
+import Compliance from '@acweb/pages/Compliance';
+import Scheduling from '@acweb/pages/Scheduling';
+import PayerEnrollment from '@acweb/pages/PayerEnrollment';
+import Reimbursement from '@acweb/pages/Reimbursement';
+import DocumentStorage from '@acweb/pages/DocumentStorage';
+import FacilityManagement from '@acweb/pages/FacilityManagement';
+
 
 const App: React.FC = () => {
   return (
@@ -19,6 +27,13 @@ const App: React.FC = () => {
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/eula" element={<EULA />} />
         <Route path="/jobs" element={<PublicJobs />} />
+        <Route path="/credentialing" element={<Credentialing />} />
+        <Route path="/compliance" element={<Compliance />} />
+        <Route path="/scheduling" element={<Scheduling />} />
+        <Route path="/payer-enrollment" element={<PayerEnrollment />} />
+        <Route path="/reimbursement" element={<Reimbursement />} />
+        <Route path="/document-storage" element={<DocumentStorage />} />
+        <Route path="/facility-management" element={<FacilityManagement />} />
       </Routes>
     </BrowserRouter>
   );

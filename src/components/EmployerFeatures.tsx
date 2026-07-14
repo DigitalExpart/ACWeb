@@ -288,7 +288,7 @@ const EmployerFeatures: React.FC = () => {
     },
     {
       id: 'payer',
-      title: 'Payer Enrollment',
+      title: 'Payer Enrollment Readiness',
       subtitle: 'Simplify insurance panels and credentialing submissions.',
       content: (
         <div className="pt-4 pb-6 space-y-4">

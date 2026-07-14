@@ -11,10 +11,10 @@ import KeyFeatures from '@acweb/components/KeyFeatures';
 import EmployerFeatures from '@acweb/components/EmployerFeatures';
 import Testimonials from '@acweb/components/Testimonials';
 import Pricing from '@acweb/components/Pricing';
-import AboutTrust from '@acweb/components/AboutTrust';
 import SecurityFeatures from '@acweb/components/SecurityFeatures';
-import CTAStrip from '@acweb/components/CTAStrip';
 import Footer from '@acweb/components/Footer';
+import EmployerPage from '@acweb/components/EmployerPage';
+
 
 const IndexContent: React.FC = () => {
   const { userType, setUserType } = useUserType();
@@ -124,20 +124,16 @@ const IndexContent: React.FC = () => {
       <Header />
       <UserTypeTabs />
       <main className="flex-grow pt-40 md:pt-52">
-        <Hero />
-        <PainPoints />
-        <HowItWorks />
-        {/* EmployerFeatures — the new dropdown accordion section */}
-        {userType === 'employer' && <EmployerFeatures />}
-        {userType === 'employer' && <SecurityFeatures />}
-        {userType === 'provider' && <SecurityFeatures />}
-        {userType === 'resident' && <SecurityFeatures />}
-        {/* KeyFeatures only shown for employers (providers use HowItWorks) */}
-        {userType === 'employer' && <KeyFeatures />}
-        {(userType === 'provider' || userType === 'resident') && <Testimonials />}
-        <Pricing />
-        <AboutTrust />
-        <CTAStrip />
+        {userType === 'employer' ? (
+          <EmployerPage />
+        ) : (
+          <>
+            <Hero />
+            <PainPoints />
+            <Pricing />
+            <Testimonials />
+          </>
+        )}
       </main>
       <Footer />
     </div>

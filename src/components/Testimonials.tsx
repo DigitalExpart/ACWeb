@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Star, Quote, CheckCircle } from 'lucide-react';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
 
@@ -47,8 +47,8 @@ const Testimonials: React.FC = () => {
     }
   ];
 
-  // Don't show Testimonials section for providers
-  if (userType === 'provider') {
+  // Don't show Testimonials section for providers or residents
+  if (userType === 'provider' || userType === 'resident') {
     return null;
   }
 
