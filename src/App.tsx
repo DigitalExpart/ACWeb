@@ -14,6 +14,8 @@ import PayerEnrollment from '@acweb/pages/PayerEnrollment';
 import Reimbursement from '@acweb/pages/Reimbursement';
 import DocumentStorage from '@acweb/pages/DocumentStorage';
 import FacilityManagement from '@acweb/pages/FacilityManagement';
+import AutomatedCredentialingPacket from '@acweb/pages/AutomatedCredentialingPacket';
+import Onboarding from '@acweb/pages/Onboarding';
 
 
 const App: React.FC = () => {
@@ -34,6 +36,8 @@ const App: React.FC = () => {
         <Route path="/reimbursement" element={<Reimbursement />} />
         <Route path="/document-storage" element={<DocumentStorage />} />
         <Route path="/facility-management" element={<FacilityManagement />} />
+        <Route path="/automated-credentialing-packet" element={<AutomatedCredentialingPacket />} />
+        <Route path="/onboarding" element={<Onboarding />} />
       </Routes>
     </BrowserRouter>
   );

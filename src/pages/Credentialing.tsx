@@ -224,7 +224,7 @@ const Credentialing: React.FC = () => {
                     { title: "100% Accurate", desc: "Primary source verification" },
                     { title: "Automatic Alerts", desc: "Expirations & missing items" },
                     { title: "Real-Time Visibility", desc: "Across all facilities and providers" },
-                    { title: "Secure & Compliant", desc: "HIPAA-aligned & encrypted" }
+                    { title: "Secure & Compliant", desc: "SOC 2 Type 2 Compliant & encrypted" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-4">
                       <div className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0 mt-1">

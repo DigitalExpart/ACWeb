@@ -20,7 +20,8 @@ import {
   Receipt,
   ChevronRight,
   ChevronDown,
-  Cloud
+  Cloud,
+  Zap
 } from 'lucide-react';
 import { SUPABASE_URL } from "@acweb/integrations/supabase/client";
 
@@ -160,11 +161,22 @@ const EmployerPage: React.FC = () => {
       ]
     },
     {
+      title: "Automated Credentialing Packet Completion",
+      desc: "Auto-fill credentialing PDF packets using stored provider data in minutes.",
+      detailedDesc: "From hours of manual work to days, automatically — upload any credentialing PDF and let Anesthesia Connect auto-fill every field.",
+      bullets: [
+        "Upload any credentialing PDF packet",
+        "Auto-fill 20–50 pages of forms instantly",
+        "Pull from licenses, certs, DEA, malpractice & more",
+        "Download, sign, and send — ready to go"
+      ]
+    },
+    {
       title: "... and more",
       desc: "Additional tools to streamline every part of your operations.",
       detailedDesc: "Expand the platform with additional workflows to handle all aspects of anesthesia group operations.",
       bullets: [
-        "HIPAA-compliant secure messaging",
+        "Secure messaging",
         "Admin permission controls",
         "SOC 2 Type 2 compliance audit logs",
         "Direct EHR/scheduling software integrations"
@@ -206,6 +218,8 @@ const EmployerPage: React.FC = () => {
                 {dropdownOpen && (
                   <div className="absolute top-full left-0 mt-2 z-50 bg-[#0d1f3c] border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[240px]">
                     {[
+                      { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding", route: "/onboarding" },
+                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", route: "/automated-credentialing-packet" },
                       { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing", route: "/credentialing" },
                       { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management", route: "/compliance" },
                       { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping", route: "/scheduling" },

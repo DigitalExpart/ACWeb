@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Button } from '@acweb/components/ui/button';
 import { Shield, Users, Award, CheckCircle, Mail, MapPin } from 'lucide-react';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
@@ -105,7 +105,7 @@ const ProviderFAQs: React.FC = () => {
         "name": "Is my information secure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "All data is encrypted using modern security protocols aligned with SOC 2 Type II best practices. Your information is protected with the same standards used by major healthcare and payroll platforms."
+          "text": "All data is encrypted using SOC 2 Type 2 compliant security protocols. Your information is protected with the same standards used by major healthcare and payroll platforms."
         }
       },
       {
@@ -223,7 +223,7 @@ const ProviderFAQs: React.FC = () => {
       questions: [
         {
           q: "Is my information secure?",
-          a: "All data is encrypted using modern security protocols aligned with SOC 2 Type II best practices. Your information is protected with the same standards used by major healthcare and payroll platforms."
+          a: "All data is encrypted using SOC 2 Type 2 compliant security protocols. Your information is protected with the same standards used by major healthcare and payroll platforms."
         },
         {
           q: "Does Anesthesia Connect support multi-factor authentication (MFA)?",
@@ -360,7 +360,7 @@ const EmployerFAQs: React.FC = () => {
         "name": "Is provider data secure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "All documents and data are encrypted at rest and in transit using SOC 2 Type IIâ€“aligned protocols. Access is restricted based on your administrator's permissions, and every action is logged for audit purposes."
+          "text": "All documents and data are encrypted at rest and in transit using SOC 2 Type 2 compliant protocols. Access is restricted based on your administrator's permissions, and every action is logged for audit purposes."
         }
       },
       {
@@ -486,7 +486,7 @@ const EmployerFAQs: React.FC = () => {
       questions: [
         {
           q: "Is provider data secure?",
-          a: "All documents and data are encrypted at rest and in transit using SOC 2 Type IIâ€“aligned protocols. Access is restricted based on your administrator's permissions, and every action is logged for audit purposes."
+          a: "All documents and data are encrypted at rest and in transit using SOC 2 Type 2 compliant protocols. Access is restricted based on your administrator's permissions, and every action is logged for audit purposes."
         },
         {
           q: "Do employers gain automatic access to all provider documents?",

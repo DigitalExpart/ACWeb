@@ -68,7 +68,7 @@ const PayerEnrollment: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs text-gray-400 font-semibold mt-3">
                   <Lock className="h-3.5 w-3.5" />
-                  <span>HIPAA-Aligned & SOC 2 Type 2 in Progress</span>
+                  <span>SOC 2 Type 2 Compliant</span>
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ const PayerEnrollment: React.FC = () => {
                       desc: "Assign tasks, add notes, and keep your team aligned."
                     }
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div key={idx} className="flex items-center p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                       <div className="flex items-start gap-3.5 text-left">
                         <div className="mt-0.5 p-2 bg-blue-50 rounded-lg flex-shrink-0">
                           {item.icon}
@@ -143,7 +143,6 @@ const PayerEnrollment: React.FC = () => {
                           <p className="text-gray-500 text-xs sm:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-gray-400 flex-shrink-0 ml-2" />
                     </div>
                   ))}
                 </div>
@@ -255,12 +254,19 @@ const PayerEnrollment: React.FC = () => {
                     Faster provider readiness. Cleaner files. Fewer delays. Stronger revenue.
                   </span>
                 </div>
+
+                {/* Total Savings Bar */}
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 mt-4 text-center">
+                  <p className="text-white/80 text-xs font-bold tracking-wider uppercase mb-1">Total Potential Savings</p>
+                  <p className="text-white text-3xl sm:text-4xl font-extrabold">Up to $375,000 Saved Annually</p>
+                  <p className="text-blue-200 text-xs sm:text-sm mt-2 font-semibold">Per 100 providers</p>
+                </div>
               </div>
 
               {/* Right Column: Reports & Mobile experience */}
               <div>
                 <h3 className="text-2xl font-extrabold mb-8 text-[#0a1628] text-center lg:text-left">
-                  Reports You Can Run
+                  Reports You Can Run…and More!
                 </h3>
                 <div className="space-y-3.5 mb-8">
                   {[
@@ -270,14 +276,13 @@ const PayerEnrollment: React.FC = () => {
                     { icon: <AlertCircle className="h-5 w-5 text-blue-650" />, title: "Providers not enrollment-ready" },
                     { icon: <BarChart3 className="h-5 w-5 text-blue-650" />, title: "Enrollment pipeline & bottlenecks" }
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div key={idx} className="flex items-center p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                       <div className="flex items-center gap-3 text-left">
                         <div className="p-1.5 bg-blue-50/50 rounded-lg">
                           {item.icon}
                         </div>
                         <span className="text-[#0a1628] font-bold text-sm sm:text-base">{item.title}</span>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
                     </div>
                   ))}
                 </div>
@@ -308,7 +313,7 @@ const PayerEnrollment: React.FC = () => {
               </button>
               <div className="flex items-center justify-center gap-1.5 text-xs text-gray-450 font-semibold">
                 <Lock className="h-3.5 w-3.5" />
-                <span>HIPAA-Aligned & SOC 2 Type 2 in Progress</span>
+                <span>SOC 2 Type 2 Compliant</span>
               </div>
             </div>
 
