@@ -403,21 +403,22 @@ const EmployerPage: React.FC = () => {
             </div>
 
             {/* SVG Connecting Lines (Dotted) */}
-            <div className="absolute inset-0 pointer-events-none hidden md:block">
-              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <g stroke="#3b82f6" strokeWidth="2" strokeDasharray="4 4" fill="none" opacity="0.4">
+            <div className="absolute inset-0 pointer-events-none hidden md:block z-0">
+              <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#3b82f6" strokeWidth="2" strokeDasharray="6 6" fill="none" opacity="0.4">
                   {/* Connect top rows to central point */}
-                  <path d="M 120 120 C 120 220, 420 220, 420 280" />
-                  <path d="M 280 120 C 280 220, 420 220, 420 280" />
-                  <path d="M 440 120 C 440 220, 420 220, 420 280" />
-                  <path d="M 600 120 C 600 220, 420 220, 420 280" />
-                  <path d="M 760 120 C 760 220, 420 220, 420 280" />
+                  <path d="M 10 32 C 10 50, 50 60, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 30 32 C 30 50, 50 60, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 50 32 L 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 70 32 C 70 50, 50 60, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 90 32 C 90 50, 50 60, 50 85" vectorEffect="non-scaling-stroke" />
 
-                  <path d="M 120 240 C 120 260, 420 260, 420 280" />
-                  <path d="M 280 240 C 280 260, 420 260, 420 280" />
-                  <path d="M 440 240 C 440 260, 420 260, 420 280" />
-                  <path d="M 600 240 C 600 260, 420 260, 420 280" />
-                  <path d="M 760 240 C 760 260, 420 260, 420 280" />
+                  {/* Connect bottom rows to central point */}
+                  <path d="M 10 65 C 10 75, 50 75, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 30 65 C 30 75, 50 75, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 50 65 L 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 70 65 C 70 75, 50 75, 50 85" vectorEffect="non-scaling-stroke" />
+                  <path d="M 90 65 C 90 75, 50 75, 50 85" vectorEffect="non-scaling-stroke" />
                 </g>
               </svg>
             </div>
