@@ -467,11 +467,11 @@ const EmployerPage: React.FC = () => {
                   onClick={() => toggleAccordion(i)}
                   className="w-full p-5 flex items-center justify-between group cursor-pointer focus:outline-none"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-                    <span className="font-extrabold text-base sm:text-lg text-[#0a1628] w-48 flex-shrink-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 w-full">
+                    <span className="font-extrabold text-base sm:text-lg text-[#0a1628] w-full sm:w-[280px] text-left flex-shrink-0">
                       {item.title}
                     </span>
-                    <span className="text-gray-500 text-sm sm:text-base font-semibold">
+                    <span className="text-gray-500 text-sm sm:text-base font-semibold text-left">
                       {item.desc}
                     </span>
                   </div>
