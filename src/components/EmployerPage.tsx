@@ -76,6 +76,7 @@ const EmployerPage: React.FC = () => {
       title: "Provider Onboarding",
       desc: "Digital applications, document collection, and automated workflows.",
       detailedDesc: "Get clinicians working weeks earlier with streamlined, automated onboarding processes.",
+      icon: <UserCheck className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Digital onboarding packets",
         "Electronic signature routing",
@@ -87,6 +88,7 @@ const EmployerPage: React.FC = () => {
       title: "Credentialing",
       desc: "Automated packet creation, CAQH integration, and status tracking.",
       detailedDesc: "Complete hospital and facility credentialing packets 95% faster with automated autofill.",
+      icon: <FileText className="h-7 w-7 text-blue-600" />,
       bullets: [
         "CAQH direct profile integration",
         "Autofill 20-50 pages of hospital forms",
@@ -98,6 +100,7 @@ const EmployerPage: React.FC = () => {
       title: "Compliance Management",
       desc: "Expirations, monitoring, alerts, and audit-ready reporting.",
       detailedDesc: "Proactively track and manage state licenses, board certs, and DEA expirations.",
+      icon: <ShieldCheck className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Smart 30-day expiration alerts",
         "Continuous compliance monitoring",
@@ -109,6 +112,7 @@ const EmployerPage: React.FC = () => {
       title: "Scheduling & Timekeeping",
       desc: "Optimize provider schedules, track time, and manage staffing.",
       detailedDesc: "Simplify complex anesthesia shifts scheduling and track clock-ins securely.",
+      icon: <Calendar className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Multi-facility schedule builder",
         "Provider mobile shift check-in",
@@ -120,6 +124,7 @@ const EmployerPage: React.FC = () => {
       title: "Payer Enrollment Readiness",
       desc: "Track enrollment status, reduce delays, and avoid revenue leakage.",
       detailedDesc: "Get providers enrolled in insurance plans faster to avoid delays in billing and reimbursement.",
+      icon: <Building className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Payer application status tracking",
         "Automatic blockage notifications",
@@ -131,6 +136,7 @@ const EmployerPage: React.FC = () => {
       title: "Reimbursement Requests",
       desc: "Submit requests, track status, and resolve issues faster.",
       detailedDesc: "Empower providers to submit CME, travel, or licensing expenses directly from their mobile wallets.",
+      icon: <Receipt className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Mobile receipt upload and capture",
         "Instant approval workflows",
@@ -142,6 +148,7 @@ const EmployerPage: React.FC = () => {
       title: "Document Storage",
       desc: "Secure storage, organization, and instant access to all documents.",
       detailedDesc: "Store and manage sensitive clinician documents in a SOC 2 Type 2 secure credential vault.",
+      icon: <Folder className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Protected enterprise-grade encryption",
         "Global search and custom document tags",
@@ -153,6 +160,7 @@ const EmployerPage: React.FC = () => {
       title: "Facility Management",
       desc: "Manage facilities, privileges, and credentialing requirements.",
       detailedDesc: "Ensure compliance across all hospital and surgery center locations by setting custom rules.",
+      icon: <Building className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Custom facility-specific rulesets",
         "Facility roster generation",
@@ -164,6 +172,7 @@ const EmployerPage: React.FC = () => {
       title: "Automated Credentialing Packet Completion",
       desc: "Auto-fill credentialing PDF packets using stored provider data in minutes.",
       detailedDesc: "From hours of manual work to days, automatically — upload any credentialing PDF and let Anesthesia Connect auto-fill every field.",
+      icon: <Zap className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Upload any credentialing PDF packet",
         "Auto-fill 20–50 pages of forms instantly",
@@ -175,6 +184,7 @@ const EmployerPage: React.FC = () => {
       title: "... and more",
       desc: "Additional tools to streamline every part of your operations.",
       detailedDesc: "Expand the platform with additional workflows to handle all aspects of anesthesia group operations.",
+      icon: <MoreHorizontal className="h-7 w-7 text-blue-600" />,
       bullets: [
         "Secure messaging",
         "Admin permission controls",
@@ -468,10 +478,15 @@ const EmployerPage: React.FC = () => {
                   className="w-full p-5 flex items-center justify-between group cursor-pointer focus:outline-none"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 w-full">
-                    <span className="font-extrabold text-base sm:text-lg text-[#0a1628] w-full sm:w-[280px] text-left flex-shrink-0">
-                      {item.title}
-                    </span>
-                    <span className="text-gray-500 text-sm sm:text-base font-semibold text-left">
+                    <div className="flex items-center gap-4 w-full sm:w-[340px] flex-shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+                        {item.icon}
+                      </div>
+                      <span className="font-extrabold text-base sm:text-lg text-[#0a1628] text-left">
+                        {item.title}
+                      </span>
+                    </div>
+                    <span className="text-gray-500 text-sm sm:text-base font-semibold text-left mt-2 sm:mt-0">
                       {item.desc}
                     </span>
                   </div>
