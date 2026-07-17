@@ -188,7 +188,7 @@ const PainPoints: React.FC = () => {
         {userType === 'provider' && (
           <>
             {/* ── NEW SECTION: EVERYTHING YOU NEED ────────────────────────────── */}
-            <section className="pt-24 pb-8 sm:pt-32 sm:pb-12 bg-white text-center">
+            <section className="pt-64 pb-8 sm:pt-32 sm:pb-12 bg-white text-center">
               <div className="container-ac px-4 sm:px-6 max-w-4xl mx-auto">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] mb-1 tracking-tight">
                   Everything you need.

@@ -68,9 +68,9 @@ const UserTypeTabs: React.FC = () => {
       className="bg-white border-b border-gray-200 fixed left-0 right-0 z-[90] w-full shadow-sm"
       style={{ top: `${topOffset}px` }}
     >
-      <div className="container-ac">
-        <div className="flex justify-center">
-          <div className="flex bg-gray-100 rounded-lg p-1 my-4">
+      <div className="container-ac px-2 sm:px-4">
+        <div className="flex justify-start sm:justify-center overflow-x-auto pb-2 -mb-2 hide-scrollbar">
+          <div className="flex bg-gray-100 rounded-lg p-1 my-4 min-w-max">
             <button
               type="button"
               onClick={() => handleTabClick('provider')}
