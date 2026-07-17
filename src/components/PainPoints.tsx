@@ -187,6 +187,39 @@ const PainPoints: React.FC = () => {
         {/* ── PROVIDER-ONLY SECTIONS ───────────────────────────────────────── */}
         {userType === 'provider' && (
           <>
+            {/* ── NEW SECTION: EVERYTHING YOU NEED ────────────────────────────── */}
+            <section className="pt-24 pb-8 sm:pt-32 sm:pb-12 bg-white text-center">
+              <div className="container-ac px-4 sm:px-6 max-w-4xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] mb-1 tracking-tight">
+                  Everything you need.
+                </h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-600 mb-6 tracking-tight">
+                  All in one secure platform.
+                </h2>
+                <p className="text-gray-500 font-medium text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+                  Anesthesia Connect is your digital wallet for storing and managing every credential, license, certification, and document you need throughout your career — all in one secure place.
+                </p>
+                
+                {/* Dark Blue Banner */}
+                <div className="bg-[#0a1628] rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between text-left shadow-lg cursor-pointer hover:bg-[#0d1d36] transition-colors group">
+                  <div className="flex items-center gap-5 w-full">
+                    <div className="bg-white rounded-md px-3 py-1 font-bold text-blue-600 text-sm tracking-widest shadow-sm">
+                      NEW
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold text-base sm:text-lg">
+                        Expense Tax Tracking & CPA Export
+                      </h4>
+                      <p className="text-gray-300 text-sm mt-0.5">
+                        Track expenses. Maximize deductions. Export with ease.
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="h-6 w-6 text-gray-400 group-hover:text-white transition-colors mt-4 sm:mt-0 flex-shrink-0 hidden sm:block" />
+                </div>
+              </div>
+            </section>
+
             {/* ── WHAT YOU CAN DO 9-Icon Grid ──────────────────────────────── */}
             <section className="py-12 sm:py-16 bg-white" id="for-anesthesia-providers">
               <div className="container-ac px-4 sm:px-6">
