@@ -143,12 +143,7 @@ const Pricing: React.FC = () => {
 
           {/* Pricing Card */}
           <div className="max-w-4xl mx-auto relative pt-4">
-            {/* OUR ONLY PLAN badge */}
-            <div className="absolute top-0 left-0 w-full flex justify-center z-10">
-              <span className="bg-[#1a56db] text-white text-[11px] font-extrabold tracking-widest uppercase px-5 py-1.5 rounded-full shadow-sm">
-                OUR ONLY PLAN
-              </span>
-            </div>
+            {/* Pricing Card */}
 
             <div className="relative bg-white rounded-xl shadow-lg border-2 border-[#1a56db]/80 p-8 md:p-10">
               <div className="grid md:grid-cols-2 gap-10">
@@ -178,6 +173,9 @@ const Pricing: React.FC = () => {
 
                   {/* Annual savings */}
                   <div className="mb-6 p-4 bg-green-50/80 rounded-xl text-center border border-green-100/50 ml-18">
+                    <p className="text-sm font-bold text-green-700 mb-1">
+                      FREE for anesthesia programs/residents
+                    </p>
                     <p className="text-sm font-bold text-green-700">
                       $17.99/month if paid annually
                     </p>

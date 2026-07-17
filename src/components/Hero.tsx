@@ -138,9 +138,8 @@ const Hero = () => {
         {/* Floating Feature Strip under the Hero */}
         <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 z-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-6 px-4 sm:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-y-6 md:gap-y-0 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-y-6 md:gap-y-0 text-center">
               {[
-                { icon: <Lock className="h-6 w-6 text-blue-500" />, line1: "Bank-Level", line2: "Security" },
                 { icon: <Zap className="h-6 w-6 text-blue-500" />, line1: "Instant Sharing", line2: "& E-Signatures" },
                 { icon: <Bell className="h-6 w-6 text-blue-500" />, line1: "Expiration", line2: "Alerts" },
                 { icon: <Cloud className="h-6 w-6 text-blue-500" />, line1: "Secure Cloud", line2: "Storage" }
