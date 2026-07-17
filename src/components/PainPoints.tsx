@@ -83,7 +83,7 @@ const PainPoints: React.FC = () => {
                   </div>
                   
                   <p className="text-center font-bold text-[#0a1628] text-sm sm:text-base mt-8">
-                    Always accessible. Always up to date.<br className="hidden sm:block" /> Always in your control.
+                    Always accessible. Always up to date. Always in your control.
                   </p>
                 </div>
               </div>
