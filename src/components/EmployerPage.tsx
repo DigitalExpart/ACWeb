@@ -290,12 +290,12 @@ const EmployerPage: React.FC = () => {
             </div>
 
             {/* Right Column: Image */}
-            <div className="w-full flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-xl">
+            <div className="w-full flex items-center justify-center lg:justify-end lg:pl-8">
+              <div className="relative w-full max-w-xl lg:max-w-2xl transform lg:translate-x-8">
                 <img
                   src="/employer_hero.png"
                   alt="Anesthesia Connect Employer Dashboard"
-                  className="w-full h-auto object-contain drop-shadow-2xl scale-110 lg:scale-125 origin-center lg:origin-right"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
