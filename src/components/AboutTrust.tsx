@@ -57,7 +57,7 @@ const ProviderFAQs: React.FC = () => {
         "name": "Do employers see everything in my account if they take over my subscription?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Employers that are linked with you can only view professional items that relate to onboarding and complianceâ€”licenses, certifications, immunizations, credentialing forms, and anything you choose to submit. Any documents marked as personal, such as CEU, remain visible only to you."
+          "text": "Employers that are linked with you can only view professional items that relate to onboarding and compliance—licenses, certifications, immunizations, credentialing forms, and anything you choose to submit. Any documents marked as personal, such as CEU, remain visible only to you."
         }
       },
       {
@@ -129,7 +129,7 @@ const ProviderFAQs: React.FC = () => {
         "name": "Can I download my entire credential file for my own records?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. You can download your entire vaultâ€”or send it to yourselfâ€”whenever you need a personal backup or are preparing to switch jobs or contracts."
+          "text": "Yes. You can download your entire vault—or send it to yourself—whenever you need a personal backup or are preparing to switch jobs or contracts."
         }
       }
     ]
@@ -189,7 +189,7 @@ const ProviderFAQs: React.FC = () => {
         },
         {
           q: "Do employers see everything in my account if they take over my subscription?",
-          a: "Employers that are linked with you can only view professional items that relate to onboarding and complianceâ€”licenses, certifications, immunizations, credentialing forms, and anything you choose to submit. Any documents marked as personal, such as CEU, remain visible only to you."
+          a: "Employers that are linked with you can only view professional items that relate to onboarding and compliance—licenses, certifications, immunizations, credentialing forms, and anything you choose to submit. Any documents marked as personal, such as CEU, remain visible only to you."
         },
         {
           q: "What if I leave an employer that was paying for my subscription?",
@@ -240,7 +240,7 @@ const ProviderFAQs: React.FC = () => {
         },
         {
           q: "Can I download my entire credential file for my own records?",
-          a: "Yes. You can download your entire vaultâ€”or send it to yourselfâ€”whenever you need a personal backup or are preparing to switch jobs or contracts."
+          a: "Yes. You can download your entire vault—or send it to yourself—whenever you need a personal backup or are preparing to switch jobs or contracts."
         }
       ]
     }
@@ -613,7 +613,7 @@ const AboutTrust: React.FC = () => {
     "Over 30 years of combined anesthesia experience across hospital systems, outpatient centers, and academic institutions",
     "Deep understanding of both clinical workflows and administrative bottlenecks",
     "First-hand experience navigating the challenges of onboarding, compliance audits, and credentialing packet delays",
-    "Driven by the daily realities of being on the frontlines â€” and building what we wished existed"
+    "Driven by the daily realities of being on the frontlines — and building what we wished existed"
   ];
 
 
@@ -622,9 +622,9 @@ const AboutTrust: React.FC = () => {
       <div className="container-ac">
         {/* Mission & Vision */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-ac-text mb-4">Built for Anesthesia â€” Backed by Real Provider Experience</h2>
+          <h2 className="text-3xl font-bold text-ac-text mb-4">Built for Anesthesia — Backed by Real Provider Experience</h2>
           <p className="text-lg text-ac-text-light max-w-4xl mx-auto mb-12">
-            Anesthesia Connect was created by CRNAs who experienced the inefficiencies of onboarding, paperwork chasing, and credentialing firsthand â€” and knew the process needed to change. The platform was built with direct feedback from anesthesia employers, HR leaders, and credentialing teams to eliminate scattered files, redundant requests, outdated spreadsheets, and unnecessary administrative burden.
+            Anesthesia Connect was created by CRNAs who experienced the inefficiencies of onboarding, paperwork chasing, and credentialing firsthand — and knew the process needed to change. The platform was built with direct feedback from anesthesia employers, HR leaders, and credentialing teams to eliminate scattered files, redundant requests, outdated spreadsheets, and unnecessary administrative burden.
           </p>
         </div>
 
@@ -649,7 +649,7 @@ const AboutTrust: React.FC = () => {
               <h3 className="text-2xl font-bold text-ac-text">Our Vision</h3>
             </div>
             <p className="text-ac-text-light leading-relaxed">
-              A world where every anesthesia provider and employer can manage credentials, compliance, and onboarding with confidence and ease â€” where anesthesia departments bring talent onboard in days, not weeks. We are building the infrastructure that supports the future of anesthesia.
+              A world where every anesthesia provider and employer can manage credentials, compliance, and onboarding with confidence and ease — where anesthesia departments bring talent onboard in days, not weeks. We are building the infrastructure that supports the future of anesthesia.
             </p>
           </div>
         </div>
