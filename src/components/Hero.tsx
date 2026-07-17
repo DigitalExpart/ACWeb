@@ -223,23 +223,12 @@ const Hero = () => {
 
               {/* Right Column: Devices Mockup */}
               <div className="w-full relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-lg lg:mr-4 flex items-center">
-                  {/* Laptop Mockup */}
-                  <div className="relative w-[80%] z-10">
-                    <img
-                      src="/media__1784002873643.png"
-                      alt="Anesthesia Connect Portal on Laptop"
-                      className="w-full h-auto object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                  {/* Mobile App Mockup Overlay */}
-                  <div className="absolute w-[35%] right-0 z-20 bottom-[-5%] lg:bottom-[-8%] transform translate-x-4">
-                    <img
-                      src="/media__1784002945896.png"
-                      alt="Anesthesia Connect Mobile App on Phone"
-                      className="w-full h-auto object-contain drop-shadow-2xl"
-                    />
-                  </div>
+                <div className="relative w-full max-w-lg lg:mr-4 flex items-center justify-center">
+                  <img
+                    src="/erasebg-transformed (1).png"
+                    alt="Anesthesia Connect Portal and App"
+                    className="w-full h-auto object-contain drop-shadow-2xl"
+                  />
                 </div>
               </div>
 
