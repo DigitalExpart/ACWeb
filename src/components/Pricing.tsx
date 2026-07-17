@@ -173,9 +173,6 @@ const Pricing: React.FC = () => {
 
                   {/* Annual savings */}
                   <div className="mb-6 p-4 bg-green-50/80 rounded-xl text-center border border-green-100/50 ml-18">
-                    <p className="text-sm font-bold text-green-700 mb-1">
-                      FREE for anesthesia programs/residents
-                    </p>
                     <p className="text-sm font-bold text-green-700">
                       $17.99/month if paid annually
                     </p>
