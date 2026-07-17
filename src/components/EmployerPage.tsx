@@ -289,65 +289,15 @@ const EmployerPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Feature Accordion */}
-            <div className="w-full space-y-2">
-              {accordionItems.map((item, i) => {
-                const isOpen = openIndex === i;
-                const icons = [
-                  <Users className="h-4 w-4 text-blue-300" />,
-                  <FileText className="h-4 w-4 text-blue-300" />,
-                  <ShieldCheck className="h-4 w-4 text-blue-300" />,
-                  <Calendar className="h-4 w-4 text-blue-300" />,
-                  <DollarSign className="h-4 w-4 text-blue-300" />,
-                  <Receipt className="h-4 w-4 text-blue-300" />,
-                  <Folder className="h-4 w-4 text-blue-300" />,
-                  <Building className="h-4 w-4 text-blue-300" />,
-                  <MoreHorizontal className="h-4 w-4 text-blue-300" />
-                ];
-                return (
-                  <div
-                    key={i}
-                    className="border border-white/10 rounded-xl overflow-hidden bg-white/5 transition-all duration-300"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => toggleAccordion(i)}
-                      className="w-full text-left px-4 py-4 flex items-center justify-between text-white hover:bg-white/10 transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          {icons[i]}
-                        </div>
-                        <span className="font-bold text-sm sm:text-base">{item.title}</span>
-                      </div>
-                      <ChevronDown
-                        className={`h-4 w-4 text-blue-400 flex-shrink-0 ml-3 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    <div
-                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                        isOpen
-                          ? 'max-h-[500px] opacity-100 border-t border-white/10'
-                          : 'max-h-0 opacity-0 pointer-events-none'
-                      }`}
-                    >
-                      <div className="px-4 py-4">
-                        <p className="text-blue-200 text-sm mb-3 font-semibold">{item.detailedDesc}</p>
-                        <ul className="grid grid-cols-2 gap-2">
-                          {item.bullets.map((bullet, idx) => (
-                            <li key={idx} className="flex items-center gap-2 text-xs text-blue-100 font-medium">
-                              <CheckCircle className="h-3.5 w-3.5 text-blue-400 flex-shrink-0" />
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+            {/* Right Column: Image */}
+            <div className="w-full flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-xl">
+                <img
+                  src="/employer_hero.png"
+                  alt="Anesthesia Connect Employer Dashboard"
+                  className="w-full h-auto object-contain drop-shadow-2xl scale-110 lg:scale-125 origin-center lg:origin-right"
+                />
+              </div>
             </div>
           </div>
         </div>
