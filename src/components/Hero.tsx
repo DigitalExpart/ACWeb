@@ -112,20 +112,12 @@ const Hero = () => {
 
               {/* Right: single phone mockup */}
               <div className="flex items-center justify-center">
-                <div className="relative w-60 sm:w-72 lg:w-80">
-                  <div className="bg-[#1a2744] rounded-3xl p-3 shadow-2xl border border-white/10">
-                    <img
-                      src="/media__1783908417354.png"
-                      alt="Anesthesia Connect mobile app"
-                      className="w-full rounded-2xl object-cover"
-                    />
-                  </div>
-                  <div className="absolute -bottom-4 -left-4 bg-blue-600 text-white text-xs font-bold px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
-                    AES-256 Encrypted
-                  </div>
-                  <div className="absolute -top-4 -right-4 bg-green-600 text-white text-xs font-bold px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
-                    SOC 2 Type 2
-                  </div>
+                <div className="relative w-64 sm:w-80 lg:w-[350px]">
+                  <img
+                    src="/hero_dark_phone.png"
+                    alt="Anesthesia Connect mobile app wallet"
+                    className="w-full object-contain drop-shadow-2xl"
+                  />
                 </div>
               </div>
 
