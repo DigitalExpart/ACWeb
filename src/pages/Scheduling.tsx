@@ -60,7 +60,7 @@ const Scheduling: React.FC = () => {
               {/* Center Weekly Schedule Mockup */}
               <div className="max-w-3xl mx-auto mb-16 rounded-2xl border border-gray-100 shadow-xl overflow-hidden bg-white">
                 <img 
-                  src="https://api.anesthesiaconnect.net/storage/v1/object/public/website/employer-scheduling-preview.png" 
+                  src="/scheduling_dashboard.png" 
                   alt="AI Scheduling Grid Mockup" 
                   className="w-full h-auto object-cover" 
                 />
