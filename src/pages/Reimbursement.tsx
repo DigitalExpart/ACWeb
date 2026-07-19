@@ -193,7 +193,7 @@ const Reimbursement: React.FC = () => {
             {/* Dashboard Screenshot */}
             <div className="max-w-3xl mx-auto mb-16 rounded-2xl border border-gray-200 shadow-xl overflow-hidden bg-white">
               <img
-                src="https://api.anesthesiaconnect.net/storage/v1/object/public/website/expense-report-details.png"
+                src="/expense_report_dashboard.png"
                 alt="Expense Report Details Dashboard"
                 className="w-full h-auto object-cover"
               />
