@@ -309,7 +309,7 @@ const PainPoints: React.FC = () => {
             {/* ── TRUSTED & SECURE Badges Banner ───────────────────────────── */}
             <section className="py-12 bg-white">
               <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
-                <h3 className="text-center text-xs font-extrabold text-blue-600 tracking-widest uppercase mb-8">
+                <h3 className="text-center text-base font-extrabold text-blue-600 tracking-widest uppercase mb-8">
                   TRUSTED &amp; SECURE
                 </h3>
                 <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
