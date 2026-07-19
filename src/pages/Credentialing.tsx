@@ -183,7 +183,7 @@ const Credentialing: React.FC = () => {
             <div className="mt-12 mb-16">
               <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden max-w-4xl mx-auto p-4 sm:p-6">
                 <img 
-                  src="/media__1784039374285.png" 
+                  src="/provider_status.png" 
                   alt="Provider Credentialing Status" 
                   className="w-full h-auto object-contain" 
                 />
