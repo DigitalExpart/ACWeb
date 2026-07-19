@@ -41,8 +41,8 @@ const Credentialing: React.FC = () => {
                 <span className="text-blue-700 text-sm font-semibold tracking-wide uppercase">Credentialing</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-                Complete Credentialing Packets<br />
-                in Minutes, <span className="text-blue-600">Not Hours.</span>
+                Complete Credentialing <br className="hidden sm:block" />
+                in Minutes, <span className="text-blue-600">Not Weeks.</span>
               </h1>
               <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
                 Automate every step of the credentialing process—so providers get approved faster and your team saves hours of manual work.
@@ -64,16 +64,15 @@ const Credentialing: React.FC = () => {
                 <div className="w-12 h-12 bg-green-55/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-6 w-6 text-green-600" />
                 </div>
-                <p className="text-3xl font-extrabold text-[#0a1628]">1–3 Hours</p>
-                <p className="text-green-600 font-bold text-lg mt-1">→ 5–10 Minutes</p>
-                <p className="text-gray-500 text-sm mt-2">Complete packets up to 90% faster</p>
+                <p className="text-2xl font-extrabold text-[#0a1628] leading-tight">Automated Credentialing Packet Completion</p>
+                <p className="text-green-600 font-bold text-lg mt-2">95% faster</p>
               </div>
 
               <div className="bg-[#f8faff] border border-blue-50/50 rounded-2xl p-6 text-center">
                 <div className="w-12 h-12 bg-green-55/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building className="h-6 w-6 text-green-600" />
                 </div>
-                <p className="text-3xl font-extrabold text-[#0a1628]">Start Providers Up to 1 Week Earlier</p>
+                <p className="text-3xl font-extrabold text-[#0a1628]">Start Providers Weeks Earlier</p>
                 <p className="text-gray-500 text-sm mt-3">Credentialing completed sooner, providers working sooner</p>
               </div>
 
@@ -82,7 +81,7 @@ const Credentialing: React.FC = () => {
                   <DollarSign className="h-6 w-6 text-green-600" />
                 </div>
                 <p className="text-3xl font-extrabold text-[#0a1628]">Save $5,000–$25,000</p>
-                <p className="text-gray-500 text-sm mt-3">In credentialing costs per 100 providers annually</p>
+                <p className="text-gray-500 text-sm mt-3">With automated credentialing per 100 providers annually</p>
               </div>
 
               <div className="bg-[#f8faff] border border-blue-50/50 rounded-2xl p-6 text-center">
@@ -90,7 +89,7 @@ const Credentialing: React.FC = () => {
                   <TrendingUp className="h-6 w-6 text-green-600" />
                 </div>
                 <p className="text-3xl font-extrabold text-[#0a1628]">Earn $960,000+ More Revenue</p>
-                <p className="text-gray-500 text-sm mt-3">By starting providers 1 week earlier (100 providers annually)*</p>
+                <p className="text-gray-500 text-sm mt-3">By starting providers weeks earlier (100 providers annually)</p>
               </div>
             </div>
 
@@ -111,9 +110,7 @@ const Credentialing: React.FC = () => {
               </div>
             </div>
             
-            <p className="text-center text-xs text-gray-400 italic">
-              *Based on average billed revenue of $1,920 per provider per week.
-            </p>
+
           </div>
         </section>
 
@@ -127,20 +124,21 @@ const Credentialing: React.FC = () => {
                 </h2>
                 <div className="space-y-3">
                   {[
-                    "CAQH integration",
-                    "Automated packet creation (20–50 pages)",
+                    "Centralized provider credentialing profiles",
+                    "Automated credentialing packet completion",
                     "Custom facility-specific requirements",
-                    "License, DEA & certification verification",
-                    "Board certifications (NBCRNA, ABA, NCCAA)",
-                    "Malpractice & insurance verification",
-                    "NPDB monitoring",
-                    "Immunizations & health records",
-                    "Work history & reference verification",
-                    "Committee & medical staff tracking",
-                    "Reappointment & recredentialing",
-                    "Real-time status tracking & alerts",
-                    "Secure document storage",
-                    "Audit-ready reports & logs"
+                    "License, DEA & certification document tracking",
+                    "Board certification documentation",
+                    "Malpractice insurance documentation",
+                    "Immunization & health record tracking",
+                    "Work history, education & references",
+                    "Facility affiliation & privileging tracking",
+                    "Credentialing status & workflow tracking",
+                    "Committee, board & medical staff tracking",
+                    "Reappointment & recredentialing workflows",
+                    "Expiration tracking & automated alerts",
+                    "Secure document storage & sharing",
+                    "Credentialing rosters & reports"
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
