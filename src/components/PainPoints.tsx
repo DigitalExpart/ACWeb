@@ -223,7 +223,7 @@ const PainPoints: React.FC = () => {
             {/* ── WHAT YOU CAN DO 9-Icon Grid ──────────────────────────────── */}
             <section className="py-12 sm:py-16 bg-white" id="for-anesthesia-providers">
               <div className="container-ac px-4 sm:px-6">
-                <h3 className="text-center text-sm font-extrabold text-blue-600 tracking-widest uppercase mb-10">
+                <h3 className="text-center text-base font-extrabold text-blue-600 tracking-widest uppercase mb-10">
                   WHAT YOU CAN DO
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -253,7 +253,7 @@ const PainPoints: React.FC = () => {
             {/* ── HOW IT WORKS 3-Step Flow ─────────────────────────────────── */}
             <section className="py-12 sm:py-16 bg-white">
               <div className="container-ac px-4 sm:px-6">
-                <h3 className="text-center text-sm font-extrabold text-blue-600 tracking-widest uppercase mb-12">
+                <h3 className="text-center text-base font-extrabold text-blue-600 tracking-widest uppercase mb-12">
                   HOW IT WORKS
                 </h3>
                 <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-8 max-w-4xl mx-auto">
@@ -264,7 +264,7 @@ const PainPoints: React.FC = () => {
                   ].map((item, idx) => (
                     <React.Fragment key={idx}>
                       <div className="flex-1 text-center flex flex-col items-center">
-                        <div className="w-16 h-16 bg-blue-50 border border-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-2xl mb-4 shadow-inner">
+                        <div className="w-20 h-20 bg-blue-50 border border-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-3xl mb-4 shadow-inner">
                           {item.step}
                         </div>
                         <h4 className="font-bold text-gray-900 text-lg mb-1">{item.title}</h4>
