@@ -217,12 +217,11 @@ const Credentialing: React.FC = () => {
                 <h2 className="text-3xl font-extrabold mb-8">Key Benefits</h2>
                 <div className="space-y-6">
                   {[
-                    { title: "90% Faster", desc: "Packets in 5-10 min" },
-                    { title: "20–50 Pages", desc: "Auto-generated" },
-                    { title: "100% Accurate", desc: "Primary source verification" },
+                    { title: "95% Faster", desc: "Packets in 5-10 min" },
+                    { title: "20–50 Pages", desc: "Automated credentialing packet completion" },
                     { title: "Automatic Alerts", desc: "Expirations & missing items" },
                     { title: "Real-Time Visibility", desc: "Across all facilities and providers" },
-                    { title: "Secure & Compliant", desc: "SOC 2 Type 2 Compliant & encrypted" }
+                    { title: "Secure & Compliant", desc: "SOC 2 Type 2 Compliant" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-4">
                       <div className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
