@@ -51,7 +51,7 @@ const Credentialing: React.FC = () => {
               {/* Center Dashboard Mockup */}
               <div className="max-w-3xl mx-auto mb-12 rounded-2xl border border-gray-100 shadow-xl overflow-hidden bg-white">
                 <img 
-                  src="https://api.anesthesiaconnect.net/storage/v1/object/public/website/employer-hero.png" 
+                  src="/credentialing_dashboard.png" 
                   alt="Credentialing Dashboard" 
                   className="w-full h-auto object-cover" 
                 />
