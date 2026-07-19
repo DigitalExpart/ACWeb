@@ -187,7 +187,7 @@ const Scheduling: React.FC = () => {
               {/* Double Mobile Mockup Image */}
               <div className="flex items-center justify-center">
                 <img 
-                  src="/media__1784039837141.png" 
+                  src="/provider_mobile_app_screens.png" 
                   alt="Provider Mobile App Screens" 
                   className="w-full max-w-md h-auto object-contain" 
                 />
