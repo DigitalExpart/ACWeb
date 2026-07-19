@@ -51,7 +51,7 @@ const DocumentStorage: React.FC = () => {
             {/* Dashboard Screenshot */}
             <div className="max-w-4xl mx-auto mb-16 rounded-2xl border border-gray-200 shadow-xl overflow-hidden bg-white">
               <img
-                src="https://api.anesthesiaconnect.net/storage/v1/object/public/website/document-storage-dashboard.png"
+                src="/document_storage_dashboard.png"
                 alt="Document Storage Dashboard"
                 className="w-full h-auto object-cover"
               />
