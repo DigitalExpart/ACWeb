@@ -160,7 +160,7 @@ const Scheduling: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             
             {/* Checklist & Double Phone Mockup */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-0">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold mb-8">
                   Everything Your Providers Need
@@ -183,17 +183,17 @@ const Scheduling: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
               </div>
 
               {/* Double Mobile Mockup Image */}
-              <div className="flex items-center justify-center">
+              <div className="relative z-10 flex items-center justify-center lg:justify-end mt-8 lg:mt-12 -mb-12 lg:-mb-24 pointer-events-none">
                 <img 
-                  src="/provider_mobile_app_screens.png" 
+                  src="/erasebg-transformed%20(7).png" 
                   alt="Provider Mobile App Screens" 
-                  className="w-full max-w-md h-auto object-contain" 
+                  className="w-full max-w-none lg:w-[130%] h-auto object-contain drop-shadow-2xl lg:-mr-4" 
                 />
               </div>
             </div>
 
             {/* Built-In Timekeeping Row */}
-            <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm mb-8">
+            <div className="relative z-20 bg-white rounded-3xl border border-gray-100 p-8 shadow-sm mb-8">
               <h3 className="text-2xl font-extrabold text-[#0a1628] mb-2 text-green-600">Built-In Timekeeping</h3>
               <p className="text-gray-500 text-sm mb-8">Accurate time tracking. Easy reports.</p>
               

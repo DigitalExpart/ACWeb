@@ -67,7 +67,7 @@ const FacilityManagement: React.FC<{ embedded?: boolean }> = ({ embedded = false
             {/* Laptop Mockup */}
             <div className="max-w-4xl mx-auto mb-16 rounded-2xl border border-gray-200 shadow-xl overflow-hidden bg-white">
               <img
-                src="/facilities_dashboard.png"
+                src="/ChatGPT%20Image%20Jul%2011,%202026%20at%2012_04_37%20PM.png"
                 alt="Facilities Dashboard Mockup"
                 className="w-full h-auto object-cover"
               />
