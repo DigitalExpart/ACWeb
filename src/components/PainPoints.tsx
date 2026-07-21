@@ -30,7 +30,8 @@ import {
   ClipboardCheck,
   BarChart2,
   MoreHorizontal,
-  HeartHandshake
+  HeartHandshake,
+  Zap
 } from 'lucide-react';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
 
@@ -290,7 +291,7 @@ const PainPoints: React.FC = () => {
                       <GraduationCap className="h-7 w-7" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-emerald-900 text-lg">FREE for anesthesia programs/residents</h4>
+                      <h4 className="font-bold text-emerald-900 text-lg">FREE for Anesthesia Programs/Residents</h4>
                       <p className="text-sm text-emerald-700 mt-0.5">
                         Manage clinical rotations, student compliance, and document tracking — all in one platform.
                       </p>
@@ -306,36 +307,37 @@ const PainPoints: React.FC = () => {
               </div>
             </section>
 
-            {/* ── TRUSTED & SECURE Badges Banner ───────────────────────────── */}
-            <section className="py-12 bg-white">
-              <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
-                <h3 className="text-center text-3xl font-extrabold text-blue-600 tracking-widest uppercase mb-8">
-                  TRUSTED &amp; SECURE
-                </h3>
-                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-                    {[
-                      { icon: <Lock className="h-5 w-5 text-gray-500" />, title: "AES-256", desc: "Encryption" },
-                      { icon: <Shield className="h-5 w-5 text-gray-500" />, title: "TLS 1.3", desc: "Security" },
-                      { icon: <Users className="h-5 w-5 text-gray-500" />, title: "SOC 2 Type 2", desc: "" },
-                      { icon: <Cloud className="h-5 w-5 text-gray-500" />, title: "DDoS", desc: "Protection" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 justify-center">
-                        <div className="w-10 h-10 bg-white rounded-lg border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                          {item.icon}
-                        </div>
-                        <div className="text-left">
-                          <p className="text-sm font-bold text-gray-900 leading-tight">{item.title}</p>
-                          <p className="text-xs text-gray-400">{item.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
           </>
         )}
+
+        {/* ── TRUSTED & SECURE Badges Banner (Shows on both Provider & Resident) ── */}
+        <section className="py-12 bg-[#0a1628]">
+          <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
+            <h3 className="text-center text-3xl font-extrabold text-[#3b82f6] tracking-widest uppercase mb-8">
+              TRUSTED &amp; SECURE
+            </h3>
+            <div className="bg-[#0f1f38] border border-blue-900/50 rounded-2xl p-6 sm:p-8 shadow-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                {[
+                  { icon: <Lock className="h-5 w-5 text-[#3b82f6]" />, title: "AES-256", desc: "Encryption" },
+                  { icon: <Shield className="h-5 w-5 text-[#3b82f6]" />, title: "TLS 1.3", desc: "Security" },
+                  { icon: <Users className="h-5 w-5 text-[#3b82f6]" />, title: "SOC 2 Type 2", desc: "" },
+                  { icon: <Cloud className="h-5 w-5 text-[#3b82f6]" />, title: "DDoS", desc: "Protection" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 justify-center">
+                    <div className="w-10 h-10 bg-[#132644] rounded-lg border border-blue-500/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+                      {item.icon}
+                    </div>
+                    <div className="text-left">
+                      <p className="text-sm font-bold text-white leading-tight">{item.title}</p>
+                      <p className="text-xs text-blue-200/60">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }

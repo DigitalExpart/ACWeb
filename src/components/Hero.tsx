@@ -112,9 +112,9 @@ const Hero = () => {
 
               {/* Right: single phone mockup */}
               <div className="flex items-center justify-center">
-                <div className="relative w-64 sm:w-80 lg:w-[350px]">
+                <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[650px]">
                   <img
-                    src="/hero_dark_phone.png"
+                    src="/erasebg-transformed (7).png"
                     alt="Anesthesia Connect mobile app wallet"
                     className="w-full object-contain drop-shadow-2xl"
                   />
@@ -187,7 +187,7 @@ const Hero = () => {
                       100% COMPLIMENTARY
                     </h3>
                     <p className="text-gray-800 font-semibold text-sm sm:text-base leading-snug">
-                      Free for all anesthesia students, residents and programs.
+                      Free for all anesthesia students/residents and programs.
                     </p>
                   </div>
                 </div>
@@ -225,7 +225,7 @@ const Hero = () => {
               <div className="w-full relative flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-lg lg:mr-4 flex items-center justify-center">
                   <img
-                    src="/erasebg-transformed (1).png"
+                    src="/erasebg-transformed (7).png"
                     alt="Anesthesia Connect Portal and App"
                     className="w-full h-auto object-contain drop-shadow-2xl"
                   />
@@ -234,49 +234,13 @@ const Hero = () => {
 
             </div>
 
-            {/* Bottom Section: Features White Block */}
-            <div className="bg-white rounded-2xl p-8 sm:p-10 w-full shadow-2xl border border-gray-100">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] text-center leading-tight mb-10">
-                Everything You Need. All in One Place.
-              </h2>
-              
-              <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-                <div className="flex flex-col items-center md:items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <Users className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-gray-900 font-bold text-lg mb-2">Manage Residents</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
-                      Easily manage resident profiles, clinical assignments, rotation requirements, and more.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center md:items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <Calendar className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-gray-900 font-bold text-lg mb-2">Schedule Management</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
-                      Create, assign, and manage resident schedules across multiple sites and rotations.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center md:items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <Folder className="h-10 w-10 text-[#1a56db]" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-gray-900 font-bold text-lg mb-2">Document Management</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
-                      Store, organize, and track all resident documents in one secure, cloud-based location.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {/* Bottom Section: Features Image */}
+            <div className="w-full flex justify-center">
+              <img 
+                src="/658D592D-34BF-41F1-93B9-04E183A7C516.PNG" 
+                alt="Everything you need in one place" 
+                className="w-full h-auto rounded-2xl shadow-2xl border border-gray-100"
+              />
             </div>
 
           </div>

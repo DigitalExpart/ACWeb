@@ -216,7 +216,7 @@ const Onboarding: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { title: "3–5 Hours", desc: "Admin time saved per provider", icon: <Clock className="h-6 w-6 text-blue-600" /> },
-                  { title: "70% Less Paperwork", desc: "Eliminate manual packets", icon: <FileText className="h-6 w-6 text-blue-600" /> },
+                  { title: "90% Less Paperwork", desc: "Eliminate manual packets", icon: <FileText className="h-6 w-6 text-blue-600" /> },
                   { title: "100% Digital Signatures", desc: "Legally binding electronic signatures", icon: <PenTool className="h-6 w-6 text-blue-600" /> },
                   { title: "Real-Time Tracking", desc: "Track progress in one place", icon: <Activity className="h-6 w-6 text-blue-600" /> },
                   { title: "Automatic Reminders", desc: "Never chase credentials again", icon: <Bell className="h-6 w-6 text-blue-600" /> },

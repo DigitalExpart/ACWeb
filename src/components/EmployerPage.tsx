@@ -257,7 +257,7 @@ const EmployerPage: React.FC = () => {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
                 The Operating System<br />
-                <span className="text-[#1a56db]">for Anesthesia</span><br />
+                <span className="text-blue-400">for Anesthesia</span><br />
                 Workforce Management
               </h1>
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
@@ -436,14 +436,16 @@ const EmployerPage: React.FC = () => {
             {/* Connected Point */}
             <div className="flex flex-col items-center justify-center relative z-10 pt-4 md:pt-0">
               <div className="bg-white border-2 border-blue-100 rounded-3xl p-6 shadow-xl flex flex-col items-center max-w-[280px] text-center">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-3">
-                  <Shield className="h-8 w-8 text-blue-600" />
-                </div>
+                <img 
+                  src="/anesthesia-connect-logo.png" 
+                  alt="Anesthesia Connect Logo" 
+                  className="w-16 h-16 object-contain mb-2"
+                />
                 <h3 className="font-extrabold text-[#0a1628] uppercase tracking-wider text-xs sm:text-sm">
                   ANESTHESIA CONNECT
                 </h3>
                 <p className="text-blue-600 font-bold text-xs sm:text-sm mt-1">
-                  One Centralized Platform
+                  One Connected Platform
                 </p>
               </div>
             </div>
@@ -482,9 +484,16 @@ const EmployerPage: React.FC = () => {
                       <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
                         {item.icon}
                       </div>
-                      <span className="font-extrabold text-base sm:text-lg text-[#0a1628] text-left">
-                        {item.title}
-                      </span>
+                      <div className="flex flex-col items-start text-left">
+                        <span className="font-extrabold text-base sm:text-lg text-[#0a1628]">
+                          {item.title}
+                        </span>
+                        {item.title === "Payer Enrollment Readiness" && (
+                          <span className="text-[10px] sm:text-xs text-blue-600 uppercase tracking-wider mt-0.5 font-bold">
+                            (Coming Soon)
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <span className="text-gray-500 text-sm sm:text-base font-semibold text-left mt-2 sm:mt-0">
                       {item.desc}

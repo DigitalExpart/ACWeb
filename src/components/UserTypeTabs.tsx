@@ -74,7 +74,7 @@ const UserTypeTabs: React.FC = () => {
             <button
               type="button"
               onClick={() => handleTabClick('provider')}
-              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-2 py-2 sm:px-4 sm:py-3 rounded-md text-xs sm:text-base font-medium transition-all duration-200 ${
                 !isJobsPage && userType === 'provider'
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -82,14 +82,14 @@ const UserTypeTabs: React.FC = () => {
               aria-label="Switch to Provider view"
               aria-pressed={!isJobsPage && userType === 'provider'}
             >
-              <FileText className="h-5 w-5 mr-2" />
+              <FileText className="h-4 w-4 mr-1 sm:h-5 sm:w-5 sm:mr-2" />
               <span className="hidden sm:inline">Providers</span>
-              <span className="sm:hidden">Providers</span>
+              <span className="sm:hidden tracking-tighter">Providers</span>
             </button>
             <button
               type="button"
               onClick={() => handleTabClick('employer')}
-              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-2 py-2 sm:px-4 sm:py-3 rounded-md text-xs sm:text-base font-medium transition-all duration-200 ${
                 !isJobsPage && userType === 'employer'
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -97,14 +97,14 @@ const UserTypeTabs: React.FC = () => {
               aria-label="Switch to Employer view"
               aria-pressed={!isJobsPage && userType === 'employer'}
             >
-              <Users className="h-5 w-5 mr-2" />
+              <Users className="h-4 w-4 mr-1 sm:h-5 sm:w-5 sm:mr-2" />
               <span className="hidden sm:inline">Employers</span>
-              <span className="sm:hidden">Employers</span>
+              <span className="sm:hidden tracking-tighter">Employers</span>
             </button>
             <button
               type="button"
               onClick={() => handleTabClick('resident')}
-              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-2 py-2 sm:px-4 sm:py-3 rounded-md text-xs sm:text-base font-medium transition-all duration-200 ${
                 !isJobsPage && userType === 'resident'
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -112,14 +112,14 @@ const UserTypeTabs: React.FC = () => {
               aria-label="Switch to Residents & Programs view"
               aria-pressed={!isJobsPage && userType === 'resident'}
             >
-              <GraduationCap className="h-5 w-5 mr-2" />
+              <GraduationCap className="h-4 w-4 mr-1 sm:h-5 sm:w-5 sm:mr-2" />
               <span className="hidden sm:inline">Residents & Programs</span>
-              <span className="sm:hidden">Residents</span>
+              <span className="sm:hidden tracking-tighter">Residents</span>
             </button>
             <button
               type="button"
               onClick={() => navigate('/jobs')}
-              className={`flex items-center px-4 py-3 rounded-md font-medium transition-all duration-200 ${
+              className={`flex items-center px-2 py-2 sm:px-4 sm:py-3 rounded-md text-xs sm:text-base font-medium transition-all duration-200 ${
                 isJobsPage
                   ? 'bg-white text-ac-primary shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -127,8 +127,8 @@ const UserTypeTabs: React.FC = () => {
               aria-label="View job listings"
               aria-pressed={isJobsPage}
             >
-              <Briefcase className="h-5 w-5 mr-2" />
-              <span>Jobs</span>
+              <Briefcase className="h-4 w-4 mr-1 sm:h-5 sm:w-5 sm:mr-2" />
+              <span className="tracking-tighter sm:tracking-normal">Jobs</span>
             </button>
           </div>
         </div>
