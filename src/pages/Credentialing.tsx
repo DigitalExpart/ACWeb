@@ -20,17 +20,14 @@ import {
   ChevronRight
 } from 'lucide-react';
 
-const Credentialing: React.FC = () => {
+const Credentialing: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
   const handleBookDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.location.href = '/#request-demo-pricing';
   }, []);
 
-  return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-
-      <main className="flex-grow pt-28 sm:pt-32">
+  const content = (
+    <main className={`flex-grow ${embedded ? 'py-8' : 'pt-28 sm:pt-32'}`}>
 
         {/* ── HERO SECTION ────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-white text-[#0a1628] py-16 sm:py-20 lg:py-24">
@@ -51,7 +48,7 @@ const Credentialing: React.FC = () => {
               {/* Center Dashboard Mockup */}
               <div className="max-w-3xl mx-auto mb-12 rounded-2xl border border-gray-100 shadow-xl overflow-hidden bg-white">
                 <img 
-                  src="/credentialing_dashboard.png" 
+                  src="/ChatGPT%20Image%20Jul%2011,%202026%20at%2010_13_03%20AM.png" 
                   alt="Credentialing Dashboard" 
                   className="w-full h-auto object-cover" 
                 />
@@ -266,7 +263,16 @@ const Credentialing: React.FC = () => {
         </section>
 
       </main>
+  );
 
+  if (embedded) {
+    return content;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
+      {content}
       <Footer />
     </div>
   );

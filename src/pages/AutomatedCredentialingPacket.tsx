@@ -17,17 +17,14 @@ import {
   BarChart2,
 } from 'lucide-react';
 
-const AutomatedCredentialingPacket: React.FC = () => {
+const AutomatedCredentialingPacket: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
   const handleScheduleDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.location.href = '/#request-demo-pricing';
   }, []);
 
-  return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-
-      <main className="flex-grow pt-28 sm:pt-32">
+  const content = (
+    <main className={`flex-grow ${embedded ? 'py-8' : 'pt-28 sm:pt-32'}`}>
 
         {/* ── HERO SECTION ────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-white text-[#0a1628] py-16 sm:py-20 lg:py-24">
@@ -286,7 +283,16 @@ const AutomatedCredentialingPacket: React.FC = () => {
         </section>
 
       </main>
+  );
 
+  if (embedded) {
+    return content;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
+      {content}
       <Footer />
     </div>
   );

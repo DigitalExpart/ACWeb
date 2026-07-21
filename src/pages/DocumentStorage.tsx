@@ -14,16 +14,14 @@ import {
   FileText
 } from 'lucide-react';
 
-const DocumentStorage: React.FC = () => {
+const DocumentStorage: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
   const handleDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     e.preventDefault();
     window.location.href = '/#request-demo-pricing';
   }, []);
 
-  return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-      <main className="flex-grow pt-28 sm:pt-32">
+  const content = (
+    <main className={`flex-grow ${embedded ? 'py-8' : 'pt-28 sm:pt-32'}`}>
 
         {/* ── HERO SECTION ── */}
         <section className="relative overflow-hidden bg-white text-[#0a1628] py-16 sm:py-20 lg:py-24">
@@ -161,6 +159,16 @@ const DocumentStorage: React.FC = () => {
         </section>
 
       </main>
+  );
+
+  if (embedded) {
+    return content;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
+      {content}
       <Footer />
     </div>
   );

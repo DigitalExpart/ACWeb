@@ -25,6 +25,16 @@ import {
 } from 'lucide-react';
 import { SUPABASE_URL } from "@acweb/integrations/supabase/client";
 
+import Onboarding from '@acweb/pages/Onboarding';
+import Credentialing from '@acweb/pages/Credentialing';
+import Compliance from '@acweb/pages/Compliance';
+import Scheduling from '@acweb/pages/Scheduling';
+import PayerEnrollment from '@acweb/pages/PayerEnrollment';
+import Reimbursement from '@acweb/pages/Reimbursement';
+import DocumentStorage from '@acweb/pages/DocumentStorage';
+import FacilityManagement from '@acweb/pages/FacilityManagement';
+import AutomatedCredentialingPacket from '@acweb/pages/AutomatedCredentialingPacket';
+
 const EmployerPage: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -82,7 +92,8 @@ const EmployerPage: React.FC = () => {
         "Electronic signature routing",
         "W-9 & I-9 employment forms",
         "Missing document reminders"
-      ]
+      ],
+      Component: Onboarding
     },
     {
       title: "Credentialing",
@@ -94,7 +105,8 @@ const EmployerPage: React.FC = () => {
         "Autofill 20-50 pages of hospital forms",
         "Board certs (NBCRNA, ABA) validation",
         "Malpractice insurance upload"
-      ]
+      ],
+      Component: Credentialing
     },
     {
       title: "Compliance Management",
@@ -106,7 +118,8 @@ const EmployerPage: React.FC = () => {
         "Continuous compliance monitoring",
         "Specialty and facility compliance rosters",
         "Audit-ready dashboard exports"
-      ]
+      ],
+      Component: Compliance
     },
     {
       title: "Scheduling & Timekeeping",
@@ -118,7 +131,8 @@ const EmployerPage: React.FC = () => {
         "Provider mobile shift check-in",
         "Real-time clock and timesheets",
         "Automated shift matching rules"
-      ]
+      ],
+      Component: Scheduling
     },
     {
       title: "Payer Enrollment Readiness",
@@ -130,7 +144,8 @@ const EmployerPage: React.FC = () => {
         "Automatic blockage notifications",
         "Revenue leakage analytics",
         "Centralized commercial payer logs"
-      ]
+      ],
+      Component: PayerEnrollment
     },
     {
       title: "Reimbursement Requests",
@@ -142,7 +157,8 @@ const EmployerPage: React.FC = () => {
         "Instant approval workflows",
         "Full expense history exports",
         "Automated payout calculations"
-      ]
+      ],
+      Component: Reimbursement
     },
     {
       title: "Document Storage",
@@ -154,7 +170,8 @@ const EmployerPage: React.FC = () => {
         "Global search and custom document tags",
         "Historical document archive tracking",
         "Encrypted share links for credentialers"
-      ]
+      ],
+      Component: DocumentStorage
     },
     {
       title: "Facility Management",
@@ -166,7 +183,8 @@ const EmployerPage: React.FC = () => {
         "Facility roster generation",
         "Location privilege status tracking",
         "Site administrator portals"
-      ]
+      ],
+      Component: FacilityManagement
     },
     {
       title: "Automated Credentialing Packet Completion",
@@ -178,7 +196,8 @@ const EmployerPage: React.FC = () => {
         "Auto-fill 20–50 pages of forms instantly",
         "Pull from licenses, certs, DEA, malpractice & more",
         "Download, sign, and send — ready to go"
-      ]
+      ],
+      Component: AutomatedCredentialingPacket
     },
     {
       title: "... and more",
@@ -507,18 +526,24 @@ const EmployerPage: React.FC = () => {
                 </button>
                 
                 {openIndex === i && (
-                  <div className="px-5 pb-5 pt-2 border-t border-gray-50 bg-[#f8faff] transition-all">
-                    <div className="text-sm text-gray-600 leading-relaxed font-medium">
-                      <p className="mb-3 font-bold text-[#0a1628]">{item.detailedDesc}</p>
-                      <ul className="grid sm:grid-cols-2 gap-2 mt-2">
-                        {item.bullets.map((bullet, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700">
-                            <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="border-t border-gray-100 transition-all overflow-hidden bg-white">
+                    {item.Component ? (
+                      <item.Component embedded={true} />
+                    ) : (
+                      <div className="px-5 pb-5 pt-4 bg-[#f8faff]">
+                        <div className="text-sm text-gray-600 leading-relaxed font-medium">
+                          <p className="mb-3 font-bold text-[#0a1628]">{item.detailedDesc}</p>
+                          <ul className="grid sm:grid-cols-2 gap-2 mt-2">
+                            {item.bullets.map((bullet, idx) => (
+                              <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700">
+                                <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

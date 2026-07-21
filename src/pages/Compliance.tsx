@@ -4,16 +4,14 @@ import Header from '@acweb/components/Header';
 import Footer from '@acweb/components/Footer';
 import { CheckCircle, ArrowRight, ShieldCheck, Bell, FileText, BarChart2, ChevronRight, Zap } from 'lucide-react';
 
-const Compliance: React.FC = () => {
+const Compliance: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
   const handleDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.location.href = '/#request-demo-pricing';
   }, []);
 
-  return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-      <main className="flex-grow pt-28 sm:pt-32">
+  const content = (
+    <main className={`flex-grow ${embedded ? 'py-8' : 'pt-28 sm:pt-32'}`}>
 
         {/* HERO */}
         <section className="relative overflow-hidden bg-[#0a1628] text-white py-16 sm:py-20 lg:py-24">
@@ -70,6 +68,16 @@ const Compliance: React.FC = () => {
         </section>
 
       </main>
+  );
+
+  if (embedded) {
+    return content;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
+      {content}
       <Footer />
     </div>
   );
