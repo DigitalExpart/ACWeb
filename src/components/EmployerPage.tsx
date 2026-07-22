@@ -135,6 +135,19 @@ const EmployerPage: React.FC = () => {
       Component: Scheduling
     },
     {
+      title: "Automated Credentialing Packet Completion",
+      desc: "Auto-fill credentialing PDF packets using stored provider data in minutes.",
+      detailedDesc: "From hours of manual work to days, automatically — upload any credentialing PDF and let Anesthesia Connect auto-fill every field.",
+      icon: <Zap className="h-7 w-7 text-blue-600" />,
+      bullets: [
+        "Upload any credentialing PDF packet",
+        "Auto-fill 20–50 pages of forms instantly",
+        "Pull from licenses, certs, DEA, malpractice & more",
+        "Download, sign, and send — ready to go"
+      ],
+      Component: AutomatedCredentialingPacket
+    },
+    {
       title: "Payer Enrollment Readiness",
       desc: "Track enrollment status, reduce delays, and avoid revenue leakage.",
       detailedDesc: "Get providers enrolled in insurance plans faster to avoid delays in billing and reimbursement.",
@@ -187,19 +200,6 @@ const EmployerPage: React.FC = () => {
       Component: FacilityManagement
     },
     {
-      title: "Automated Credentialing Packet Completion",
-      desc: "Auto-fill credentialing PDF packets using stored provider data in minutes.",
-      detailedDesc: "From hours of manual work to days, automatically — upload any credentialing PDF and let Anesthesia Connect auto-fill every field.",
-      icon: <Zap className="h-7 w-7 text-blue-600" />,
-      bullets: [
-        "Upload any credentialing PDF packet",
-        "Auto-fill 20–50 pages of forms instantly",
-        "Pull from licenses, certs, DEA, malpractice & more",
-        "Download, sign, and send — ready to go"
-      ],
-      Component: AutomatedCredentialingPacket
-    },
-    {
       title: "... and more",
       desc: "Additional tools to streamline every part of your operations.",
       detailedDesc: "Expand the platform with additional workflows to handle all aspects of anesthesia group operations.",
@@ -248,10 +248,10 @@ const EmployerPage: React.FC = () => {
                   <div className="absolute top-full left-0 mt-2 z-50 bg-[#0d1f3c] border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[240px]">
                     {[
                       { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding", route: "/onboarding" },
-                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", route: "/automated-credentialing-packet" },
                       { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing", route: "/credentialing" },
                       { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management", route: "/compliance" },
                       { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping", route: "/scheduling" },
+                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", route: "/automated-credentialing-packet" },
                       { icon: <DollarSign className="h-4 w-4 text-blue-300" />, label: "Payer Enrollment Readiness", route: "/payer-enrollment" },
                       { icon: <Receipt className="h-4 w-4 text-blue-300" />, label: "Reimbursement Requests", route: "/reimbursement" },
                       { icon: <Folder className="h-4 w-4 text-blue-300" />, label: "Document Storage", route: "/document-storage" },
