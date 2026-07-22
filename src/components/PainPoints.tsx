@@ -307,26 +307,26 @@ const PainPoints: React.FC = () => {
             </section>
 
             {/* ── TRUSTED & SECURE Badges Banner ───────────────────────────── */}
-            <section className="py-12 bg-white">
+            <section className="py-14 sm:py-18 bg-[#0a1628]">
               <div className="container-ac px-4 sm:px-6 max-w-5xl mx-auto">
-                <h3 className="text-center text-3xl font-extrabold text-blue-600 tracking-widest uppercase mb-8">
+                <h3 className="text-center text-3xl sm:text-4xl font-extrabold text-[#2563eb] tracking-widest uppercase mb-10">
                   TRUSTED &amp; SECURE
                 </h3>
-                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                <div className="bg-[#0d1f3c] border border-blue-500/20 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center">
                     {[
-                      { icon: <Lock className="h-5 w-5 text-gray-500" />, title: "AES-256", desc: "Encryption" },
-                      { icon: <Shield className="h-5 w-5 text-gray-500" />, title: "TLS 1.3", desc: "Security" },
-                      { icon: <Users className="h-5 w-5 text-gray-500" />, title: "SOC 2 Type 2", desc: "" },
-                      { icon: <Cloud className="h-5 w-5 text-gray-500" />, title: "DDoS", desc: "Protection" }
+                      { icon: <Lock className="h-6 w-6 sm:h-7 sm:w-7 text-blue-400" />, title: "AES-256", desc: "Encryption" },
+                      { icon: <Shield className="h-6 w-6 sm:h-7 sm:w-7 text-blue-400" />, title: "TLS 1.3", desc: "Security" },
+                      { icon: <Users className="h-6 w-6 sm:h-7 sm:w-7 text-blue-400" />, title: "SOC 2 Type 2", desc: "" },
+                      { icon: <Cloud className="h-6 w-6 sm:h-7 sm:w-7 text-blue-400" />, title: "DDoS", desc: "Protection" }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 justify-center">
-                        <div className="w-10 h-10 bg-white rounded-lg border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <div key={i} className="flex items-center gap-3.5 justify-start sm:justify-center">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600/15 border border-blue-500/30 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner">
                           {item.icon}
                         </div>
                         <div className="text-left">
-                          <p className="text-sm font-bold text-gray-900 leading-tight">{item.title}</p>
-                          <p className="text-xs text-gray-400">{item.desc}</p>
+                          <p className="text-base sm:text-lg font-bold text-white leading-tight">{item.title}</p>
+                          {item.desc && <p className="text-xs sm:text-sm text-blue-200/70 font-medium mt-0.5">{item.desc}</p>}
                         </div>
                       </div>
                     ))}

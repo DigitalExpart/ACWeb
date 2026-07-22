@@ -124,8 +124,13 @@ const Pricing: React.FC = () => {
     }
   };
 
+  // ── RESIDENT VIEW (100% Complimentary — no pricing section) ─────────────────
+  if (userType === 'resident') {
+    return null;
+  }
+
   // ── PROVIDER PRICING ───────────────────────────────────────────────────────
-  if (userType === 'provider' || userType === 'resident') {
+  if (userType === 'provider') {
     const rightFeatures = [
       "Everything above included",
       "Unlimited secure storage",
@@ -268,12 +273,6 @@ const Pricing: React.FC = () => {
   return (
     <section id="pricing" className="section bg-white py-20">
       <div className="container-ac">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-ac-text mb-4">Simple Plans That Grow With You</h2>
-          <p className="text-lg text-ac-text-light max-w-3xl mx-auto">
-            Choose the plan that fits your needs. Simple, transparent pricing for anesthesia groups and employers.
-          </p>
-        </div>
 
         {/* Financial Impact Banner */}
         <div className="bg-[#0a1628] rounded-2xl p-8 mb-12">
