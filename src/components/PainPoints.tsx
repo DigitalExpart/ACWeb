@@ -290,7 +290,7 @@ const PainPoints: React.FC = () => {
                       <GraduationCap className="h-7 w-7" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-emerald-900 text-lg">FREE for anesthesia programs/residents</h4>
+                      <h4 className="font-bold text-emerald-900 text-lg">FREE for Anesthesia Programs/Residents</h4>
                       <p className="text-sm text-emerald-700 mt-0.5">
                         Manage clinical rotations, student compliance, and document tracking — all in one platform.
                       </p>
