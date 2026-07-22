@@ -108,4 +108,13 @@
   .feature-icon {
     @apply w-12 h-12 text-ac-primary mb-4;
   }
+
+  /* Hide scrollbar for Chrome, Safari, Firefox and Edge */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
