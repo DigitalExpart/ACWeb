@@ -22,7 +22,7 @@ const Compliance: React.FC<{ embedded?: boolean }> = ({ embedded = false }) => {
               <span className="text-blue-300 text-sm font-semibold tracking-wide uppercase">Compliance Management</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
-              Stay Compliant.<br /><span className="text-blue-400">Automatically.</span>
+              Stay Compliant.<br /><span className="text-blue-600">Automatically.</span>
             </h1>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10">
               Proactively track every license, certification, and DEA expiration across your entire team — with smart alerts before anything lapses.

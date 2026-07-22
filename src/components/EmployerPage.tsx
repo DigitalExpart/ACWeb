@@ -276,7 +276,7 @@ const EmployerPage: React.FC = () => {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
                 The Operating System<br />
-                <span className="text-blue-400">for Anesthesia</span><br />
+                <span className="text-blue-600">for Anesthesia</span><br />
                 Workforce Management
               </h1>
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">

@@ -61,7 +61,7 @@ const Hero = () => {
         }}></div>
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628]"></div>
 
-        <div className="relative pb-12 pt-8 sm:pb-20 sm:pt-12 lg:pb-20 lg:pt-16">
+        <div className="relative pb-28 pt-8 sm:pb-32 sm:pt-12 lg:pb-24 lg:pt-16">
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -70,7 +70,7 @@ const Hero = () => {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
                   Your Career.
                   <br />
-                  <span className="text-blue-400">All In One Place.</span>
+                  <span className="text-blue-600">All In One Place.</span>
                 </h1>
 
                 <p className="text-blue-100 text-base sm:text-lg leading-relaxed mb-6 max-w-xl">
@@ -110,13 +110,13 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Right: single phone mockup */}
-              <div className="flex items-center justify-center">
-                <div className="relative w-64 sm:w-80 lg:w-[350px]">
+              {/* Right: phone mockup */}
+              <div className="flex items-center justify-center mt-4 lg:mt-0">
+                <div className="relative w-full max-w-[280px] sm:max-w-md lg:max-w-[480px]">
                   <img
-                    src="/hero_dark_phone.png"
+                    src="/erasebg.png"
                     alt="Anesthesia Connect mobile app wallet"
-                    className="w-full object-contain drop-shadow-2xl"
+                    className="w-full h-auto object-contain drop-shadow-2xl mx-auto"
                   />
                 </div>
               </div>
@@ -129,21 +129,19 @@ const Hero = () => {
         
         {/* Floating Feature Strip under the Hero */}
         <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 z-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-6 px-4 sm:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-y-6 md:gap-y-0 text-center">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-3.5 sm:py-6 px-4 sm:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-y-2.5 md:gap-y-0">
               {[
-                { icon: <Zap className="h-6 w-6 text-blue-500" />, line1: "Instant Sharing", line2: "& E-Signatures" },
-                { icon: <Bell className="h-6 w-6 text-blue-500" />, line1: "Expiration", line2: "Alerts" },
-                { icon: <Cloud className="h-6 w-6 text-blue-500" />, line1: "Secure Cloud", line2: "Storage" }
+                { icon: <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />, label: "Instant Sharing & E-Signatures" },
+                { icon: <Bell className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />, label: "Expiration Alerts" },
+                { icon: <Cloud className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />, label: "Secure Cloud Storage" }
               ].map((item, i) => (
-                <div key={i} className="flex items-center justify-center gap-3 px-2">
+                <div key={i} className="flex items-center justify-start md:justify-center gap-3 px-4 sm:px-2 py-2 md:py-0">
                   <div className="flex-shrink-0">
                     {item.icon}
                   </div>
                   <div className="text-xs sm:text-sm font-semibold text-gray-700 text-left leading-snug">
-                    {item.line1}
-                    <br />
-                    {item.line2}
+                    {item.label}
                   </div>
                 </div>
               ))}
@@ -223,11 +221,11 @@ const Hero = () => {
 
               {/* Right Column: Devices Mockup */}
               <div className="w-full relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-lg lg:mr-4 flex items-center justify-center">
+                <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[500px]">
                   <img
-                    src="/erasebg-transformed (1).png"
+                    src="/erasebg-transformed (7).png"
                     alt="Anesthesia Connect Portal and App"
-                    className="w-full h-auto object-contain drop-shadow-2xl"
+                    className="w-full object-contain drop-shadow-2xl"
                   />
                 </div>
               </div>
@@ -306,11 +304,11 @@ const Hero = () => {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
                 All Provider Documents in One Place.
                 <br />
-                <span className="text-blue-400">Streamline Onboarding and Credentialing.</span>
+                <span className="text-blue-600">Streamline Onboarding and Credentialing.</span>
                 <br />
                 Reduce Administrative Workload.
                 <br />
-                <span className="text-blue-400">Complete credentialing in minutes, not weeks.</span>
+                <span className="text-blue-600">Complete credentialing in minutes, not weeks.</span>
               </h1>
 
               <p className="text-blue-100 text-base sm:text-lg leading-relaxed mb-6 max-w-xl">
