@@ -41,7 +41,29 @@ const EmployerPage: React.FC = () => {
   const navigate = useNavigate();
 
   const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    const isOpening = openIndex !== index;
+    setOpenIndex(isOpening ? index : null);
+
+    if (isOpening) {
+      setTimeout(() => {
+        const itemElement = document.getElementById(`employer-accordion-item-${index}`);
+        if (itemElement) {
+          const headerElement = document.querySelector('header');
+          const tabsElement = document.querySelector('[data-user-type-tabs]') as HTMLElement;
+          const headerHeight = headerElement ? headerElement.offsetHeight : 80;
+          const tabsHeight = tabsElement ? tabsElement.offsetHeight : 60;
+          const totalOffset = headerHeight + tabsHeight + 16;
+
+          const elementPosition = itemElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: 'smooth'
+          });
+        }
+      }, 60);
+    }
   };
 
   const handleBookDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -492,7 +514,8 @@ const EmployerPage: React.FC = () => {
             {accordionItems.map((item, i) => (
               <div 
                 key={i} 
-                className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all text-left"
+                id={`employer-accordion-item-${i}`}
+                className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all text-left scroll-mt-36"
               >
                 <button 
                   onClick={() => toggleAccordion(i)}
