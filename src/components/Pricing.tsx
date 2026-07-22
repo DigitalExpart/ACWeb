@@ -125,7 +125,7 @@ const Pricing: React.FC = () => {
   };
 
   // ── PROVIDER PRICING ───────────────────────────────────────────────────────
-  if (userType === 'provider') {
+  if (userType === 'provider' || userType === 'resident') {
     const rightFeatures = [
       "Everything above included",
       "Unlimited secure storage",

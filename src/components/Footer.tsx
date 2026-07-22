@@ -231,7 +231,7 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold text-lg mb-2">Provider App</h4>
             <div className="flex space-x-2">
               <a 
-                href="https://apps.apple.com" 
+                href="https://apps.apple.com/us/app/anesthesia-connect-app/id6761342512" 
                 className="inline-flex items-center bg-black text-white rounded-md px-3 py-1"
               >
                 <img 

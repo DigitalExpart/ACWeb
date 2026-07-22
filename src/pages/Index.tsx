@@ -1,17 +1,12 @@
-
+﻿
 import React, { useEffect, useRef } from 'react';
 import { UserTypeProvider, useUserType } from '@acweb/contexts/UserTypeContext';
 import Header from '@acweb/components/Header';
 import UserTypeTabs from '@acweb/components/UserTypeTabs';
 import Hero from '@acweb/components/Hero';
 import PainPoints from '@acweb/components/PainPoints';
-import HowItWorks from '@acweb/components/HowItWorks';
-import DemoVideo from '@acweb/components/DemoVideo';
-import KeyFeatures from '@acweb/components/KeyFeatures';
-import EmployerFeatures from '@acweb/components/EmployerFeatures';
 import Testimonials from '@acweb/components/Testimonials';
 import Pricing from '@acweb/components/Pricing';
-import SecurityFeatures from '@acweb/components/SecurityFeatures';
 import Footer from '@acweb/components/Footer';
 import EmployerPage from '@acweb/components/EmployerPage';
 
@@ -125,7 +120,10 @@ const IndexContent: React.FC = () => {
       <UserTypeTabs />
       <main className="flex-grow pt-40 md:pt-52">
         {userType === 'employer' ? (
-          <EmployerPage />
+          <>
+            <EmployerPage />
+            <Pricing />
+          </>
         ) : (
           <>
             <Hero />

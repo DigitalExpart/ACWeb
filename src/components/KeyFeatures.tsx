@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { 
   Shield, 
   FileText, 
@@ -9,7 +9,9 @@ import {
   Lock,
   Cloud,
   CheckCircle,
-  Users
+  Clock,
+  Users,
+  FileCheck
 } from 'lucide-react';
 import { useUserType } from '@acweb/contexts/UserTypeContext';
 
@@ -20,13 +22,13 @@ const KeyFeatures: React.FC = () => {
     {
       icon: <Lock className="h-8 w-8" />,
       title: "Secure Cloud Storage",
-      description: "SOC 2 Type 2 Compliant infrastructure keeps all your credential data safe.",
+      description: "SOC2 Compliant Infrastructure keeps all your credential data safe.",
       color: "blue"
     },
     {
       icon: <FileText className="h-8 w-8" />,
       title: "Smart Credentialing Packets",
-      description: "Auto-generate credentialing packets with every required document for instant sharing. Automated packet completion — 95% faster than manual.",
+      description: "Auto-generate credentialing packets with every required document for instant sharing.",
       color: "green"
     },
     {
@@ -59,7 +61,7 @@ const KeyFeatures: React.FC = () => {
     {
       icon: <Lock className="h-8 w-8" />,
       title: "Secure Cloud Storage",
-      description: "SOC 2 Type 2 Compliant infrastructure keeps all provider data safe.",
+      description: "SOC2 Compliant Infrastructure keeps all provider data safe.",
       color: "blue"
     },
     {
@@ -94,7 +96,7 @@ const KeyFeatures: React.FC = () => {
     }
   ];
 
-  const features = userType === 'provider' || userType === 'resident' ? providerFeatures : employerFeatures;
+  const features = userType === 'provider' ? providerFeatures : employerFeatures;
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -108,8 +110,8 @@ const KeyFeatures: React.FC = () => {
     return colorMap[color as keyof typeof colorMap] || "bg-gray-100 text-gray-600";
   };
 
-  // Don't show Key Features section for providers (they use HowItWorks instead)
-  if (userType === 'provider' || userType === 'resident') {
+  // Don't show Key Features section for providers
+  if (userType === 'provider') {
     return null;
   }
 
@@ -140,36 +142,55 @@ const KeyFeatures: React.FC = () => {
           ))}
         </div>
 
-        {/* Enterprise Security — 3 items only, no HIPAA */}
-        <div className="mt-12 sm:mt-16 bg-[#0a1628] rounded-xl p-6 sm:rounded-2xl sm:p-8">
+        {/* Additional security features */}
+        <div className="mt-12 sm:mt-16 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 sm:rounded-2xl sm:p-8">
           <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl font-bold text-white mb-3 sm:text-2xl sm:mb-4">Enterprise-Grade Security</h3>
-            <p className="text-blue-200 max-w-2xl mx-auto text-sm sm:text-base">
-              Built with healthcare security in mind, ensuring your sensitive data is always protected.
+            <h3 className="text-xl font-bold text-ac-text mb-3 sm:text-2xl sm:mb-4">Enterprise-Grade Security</h3>
+            <p className="text-ac-text-light max-w-2xl mx-auto text-sm sm:text-base">
+              Built with healthcare compliance in mind, ensuring your sensitive data is always protected.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-6 w-6 text-blue-300" />
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-6 w-6 text-blue-600" />
               </div>
-              <h4 className="font-semibold text-white mb-2">SOC 2 Type 2 Compliant</h4>
-              <p className="text-sm text-blue-200">Third-party audited security controls and continuous monitoring</p>
+              <h4 className="font-semibold text-ac-text mb-2">HIPAA Compliant</h4>
+              <p className="text-sm text-ac-text-light">Full compliance with healthcare data protection standards</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Cloud className="h-6 w-6 text-blue-300" />
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Cloud className="h-6 w-6 text-green-600" />
               </div>
-              <h4 className="font-semibold text-white mb-2">Trusted and Secure Encryption</h4>
-              <p className="text-sm text-blue-200">AES-256 encryption for all stored documents and TLS 1.3 in transit</p>
+              <h4 className="font-semibold text-ac-text mb-2">Encrypted Storage</h4>
+              <p className="text-sm text-ac-text-light">AES-256 encryption for all stored documents</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-6 w-6 text-blue-300" />
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="h-6 w-6 text-purple-600" />
               </div>
-              <h4 className="font-semibold text-white mb-2">Active Penetration Testing</h4>
-              <p className="text-sm text-blue-200">Ongoing pen testing to proactively identify and resolve vulnerabilities</p>
+              <h4 className="font-semibold text-ac-text mb-2">Audit Ready</h4>
+              <p className="text-sm text-ac-text-light">Complete audit trails for all document activities</p>
+            </div>
+          </div>
+          
+          {/* Security certifications */}
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <h4 className="text-lg font-semibold text-ac-text text-center mb-6">Security Certifications</h4>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-75">
+              <div className="bg-white rounded-lg px-4 py-2 shadow-sm border border-gray-200">
+                <span className="text-sm font-semibold text-ac-text-light">SOC 2 Type II</span>
+              </div>
+              <div className="bg-white rounded-lg px-4 py-2 shadow-sm border border-gray-200">
+                <span className="text-sm font-semibold text-ac-text-light">DDoS protection</span>
+              </div>
+              <div className="bg-white rounded-lg px-4 py-2 shadow-sm border border-gray-200">
+                <span className="text-sm font-semibold text-ac-text-light">ISO 27001</span>
+              </div>
+              <div className="bg-white rounded-lg px-4 py-2 shadow-sm border border-gray-200">
+                <span className="text-sm font-semibold text-ac-text-light">GDPR Ready</span>
+              </div>
             </div>
           </div>
         </div>

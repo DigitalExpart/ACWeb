@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+﻿import React, { useCallback } from 'react';
 import { Button } from '@acweb/components/ui/button';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Calendar } from 'lucide-react';
@@ -73,17 +73,8 @@ const CTAStrip: React.FC = () => {
   const providerContent = {
     title: "Ready to simplify your credentialing and get your time back?",
     description: "Join thousands of anesthesia providers who have already streamlined their credentialing process with Anesthesia Connect.",
-    primaryText: "Start 14 Day Free Trial",
+    primaryText: "Start Free Trial",
     primaryLink: "/register/provider",
-    secondaryText: "Watch Demo",
-    secondaryIcon: <Calendar className="mr-2 h-5 w-5" />
-  };
-
-  const residentContent = {
-    title: "Free for Anesthesia Residents. Start today.",
-    description: "100 complimentary free for all students, residents and programs. No credit card required — just sign up and get started.",
-    primaryText: "Sign Up Free",
-    primaryLink: "/register/provider?student=true",
     secondaryText: "Watch Demo",
     secondaryIcon: <Calendar className="mr-2 h-5 w-5" />
   };
@@ -97,11 +88,7 @@ const CTAStrip: React.FC = () => {
     secondaryIcon: <Calendar className="mr-2 h-5 w-5" />
   };
 
-  const content = userType === 'provider'
-    ? providerContent
-    : userType === 'resident'
-    ? residentContent
-    : employerContent;
+  const content = userType === 'provider' ? providerContent : employerContent;
 
   return (
     <section id="contact" className="bg-gradient-to-r from-ac-primary to-ac-secondary py-16">
@@ -116,30 +103,25 @@ const CTAStrip: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to={content.primaryLink}>
-              <button
-                style={{ color: '#0066cc', backgroundColor: '#ffffff' }}
-                className="inline-flex items-center justify-center rounded-md border-0 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-sm"
-              >
+              <Button size="lg" className="bg-white text-ac-primary hover:bg-gray-100 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
                 {content.primaryText}
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
+              </Button>
             </Link>
-            <button 
-              style={{ color: '#ffffff', backgroundColor: 'transparent' }}
-              className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold hover:bg-white transition-colors duration-200 group"
-              onClick={userType !== 'employer' ? handleWatchDemoClick : undefined}
+            <Button 
+              size="lg" 
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-ac-primary px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold"
+              onClick={userType === 'provider' ? handleWatchDemoClick : undefined}
             >
               {content.secondaryIcon}
               {content.secondaryText}
-            </button>
+            </Button>
           </div>
           
           <div className="mt-8 flex flex-wrap justify-center items-center gap-8 text-blue-100">
             <div className="flex items-center">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-              <span className="text-sm">
-                {userType === 'resident' ? 'Free for residents' : '14-day free trial'}
-              </span>
+              <span className="text-sm">14-day free trial</span>
             </div>
             <div className="flex items-center">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
