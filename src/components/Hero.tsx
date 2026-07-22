@@ -235,7 +235,7 @@ const Hero = () => {
             {/* Bottom Section: Features Image */}
             <div className="w-full flex justify-center mt-8 sm:mt-10">
               <img
-                src="/658D592D-34BF-41F1-93B9-04E183A7C516.PNG"
+                src="/BA0FD763-8EBB-4C06-848C-7A4A0BC8C4DE.png"
                 alt="Everything You Need. All in One Place."
                 className="w-full max-w-5xl rounded-2xl shadow-2xl object-contain"
               />
