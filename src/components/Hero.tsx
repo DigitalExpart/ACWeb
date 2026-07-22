@@ -223,7 +223,7 @@ const Hero = () => {
               <div className="w-full relative flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[500px]">
                   <img
-                    src="/erasebg-transformed (7).png"
+                    src="/erasebg-transformed%20(7).png"
                     alt="Anesthesia Connect Portal and App"
                     className="w-full object-contain drop-shadow-2xl"
                   />
