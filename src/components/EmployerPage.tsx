@@ -44,24 +44,6 @@ const EmployerPage: React.FC = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const scrollToFeature = (index: number) => {
-    setDropdownOpen(false);
-    setOpenIndex(index);
-    setTimeout(() => {
-      const element = document.getElementById(`employer-feature-${index}`);
-      if (element) {
-        const headerElement = document.querySelector('header');
-        const tabsElement = document.querySelector('[data-user-type-tabs]') as HTMLElement;
-        const headerHeight = headerElement ? headerElement.offsetHeight : 160;
-        const tabsHeight = tabsElement ? tabsElement.offsetHeight : 88;
-        const totalOffset = headerHeight + tabsHeight + 20;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }, 50);
-  };
-
   const handleBookDemoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const targetElement = document.getElementById('request-demo-pricing');
@@ -263,24 +245,24 @@ const EmployerPage: React.FC = () => {
 
                 {/* Dropdown Menu */}
                 {dropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 z-50 bg-[#0d1f3c] border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[260px]">
+                  <div className="absolute top-full left-0 mt-2 z-50 bg-[#0d1f3c] border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[240px]">
                     {[
-                      { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding", index: 0 },
-                      { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing", index: 1 },
-                      { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management", index: 2 },
-                      { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping", index: 3 },
-                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", index: 4 },
-                      { icon: <DollarSign className="h-4 w-4 text-blue-300" />, label: "Payer Enrollment Readiness", index: 5 },
-                      { icon: <Receipt className="h-4 w-4 text-blue-300" />, label: "Reimbursement Requests", index: 6 },
-                      { icon: <Folder className="h-4 w-4 text-blue-300" />, label: "Document Storage", index: 7 },
-                      { icon: <Building className="h-4 w-4 text-blue-300" />, label: "Facility Management", index: 8 },
-                      { icon: <MoreHorizontal className="h-4 w-4 text-blue-300" />, label: "... and more", index: 9 },
+                      { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding", route: "/onboarding" },
+                      { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing", route: "/credentialing" },
+                      { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management", route: "/compliance" },
+                      { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping", route: "/scheduling" },
+                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", route: "/automated-credentialing-packet" },
+                      { icon: <DollarSign className="h-4 w-4 text-blue-300" />, label: "Payer Enrollment Readiness", route: "/payer-enrollment" },
+                      { icon: <Receipt className="h-4 w-4 text-blue-300" />, label: "Reimbursement Requests", route: "/reimbursement" },
+                      { icon: <Folder className="h-4 w-4 text-blue-300" />, label: "Document Storage", route: "/document-storage" },
+                      { icon: <Building className="h-4 w-4 text-blue-300" />, label: "Facility Management", route: "/facility-management" },
+                      { icon: <MoreHorizontal className="h-4 w-4 text-blue-300" />, label: "... and more", route: "/" },
                     ].map((opt, idx) => (
                       <button
                         key={idx}
                         type="button"
-                        onClick={() => scrollToFeature(opt.index)}
-                        className="w-full flex items-center gap-3 px-4 py-3 text-left text-white hover:bg-white/10 transition-colors border-b border-white/5 last:border-0 cursor-pointer"
+                        onClick={() => { setDropdownOpen(false); navigate(opt.route); }}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left text-white hover:bg-white/10 transition-colors border-b border-white/5 last:border-0"
                       >
                         <div className="w-7 h-7 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                           {opt.icon}
@@ -429,28 +411,23 @@ const EmployerPage: React.FC = () => {
             {/* Top Grid of Disconnected Items */}
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 relative z-10 mb-16">
               {[
-                { icon: <UserCheck className="h-6 w-6 text-blue-600" />, title: "Onboarding", index: 0 },
-                { icon: <FileText className="h-6 w-6 text-blue-600" />, title: "Credentialing", index: 1 },
-                { icon: <ShieldCheck className="h-6 w-6 text-blue-600" />, title: "Compliance", index: 2 },
-                { icon: <Calendar className="h-6 w-6 text-blue-600" />, title: "Scheduling", index: 3 },
-                { icon: <Zap className="h-6 w-6 text-blue-600" />, title: "Automated Credentialing Packet", index: 4 },
-                { icon: <Building className="h-6 w-6 text-blue-600" />, title: "Payer Enrollment", index: 5 },
-                { icon: <Receipt className="h-6 w-6 text-blue-600" />, title: "Reimbursement Requests", index: 6 },
-                { icon: <Folder className="h-6 w-6 text-blue-600" />, title: "Document Storage", index: 7 },
-                { icon: <Building className="h-6 w-6 text-blue-600" />, title: "Facility Management", index: 8 },
-                { icon: <MoreHorizontal className="h-6 w-6 text-blue-600" />, title: "... and more", index: 9 }
+                { icon: <UserCheck className="h-6 w-6 text-blue-600" />, title: "Onboarding" },
+                { icon: <FileText className="h-6 w-6 text-blue-600" />, title: "Credentialing" },
+                { icon: <Calendar className="h-6 w-6 text-blue-600" />, title: "Scheduling" },
+                { icon: <Clock className="h-6 w-6 text-blue-600" />, title: "Time Keeping" },
+                { icon: <ShieldCheck className="h-6 w-6 text-blue-600" />, title: "Compliance" },
+                { icon: <Building className="h-6 w-6 text-blue-600" />, title: "Payer Enrollment" },
+                { icon: <Receipt className="h-6 w-6 text-blue-600" />, title: "Reimbursement Requests" },
+                { icon: <Folder className="h-6 w-6 text-blue-600" />, title: "Document Storage" },
+                { icon: <Building className="h-6 w-6 text-blue-600" />, title: "Facility Management" },
+                { icon: <MoreHorizontal className="h-6 w-6 text-blue-600" />, title: "... and more" }
               ].map((item, i) => (
-                <button 
-                  key={i} 
-                  type="button"
-                  onClick={() => scrollToFeature(item.index)}
-                  className="bg-white border border-blue-50 rounded-2xl p-4 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md hover:border-blue-300 transition-all h-28 cursor-pointer group"
-                >
-                  <div className="w-10 h-10 bg-blue-50 group-hover:bg-blue-100 rounded-full flex items-center justify-center mb-2 transition-colors">
+                <div key={i} className="bg-white border border-blue-50 rounded-2xl p-4 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow h-28">
+                  <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center mb-2">
                     {item.icon}
                   </div>
                   <span className="text-[#0a1628] font-bold text-xs leading-tight">{item.title}</span>
-                </button>
+                </div>
               ))}
             </div>
 
@@ -515,7 +492,6 @@ const EmployerPage: React.FC = () => {
             {accordionItems.map((item, i) => (
               <div 
                 key={i} 
-                id={`employer-feature-${i}`}
                 className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all text-left"
               >
                 <button 
