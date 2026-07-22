@@ -38,6 +38,7 @@ import AutomatedCredentialingPacket from '@acweb/pages/AutomatedCredentialingPac
 const EmployerPage: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedFeatureLabel, setSelectedFeatureLabel] = useState("Provider Onboarding");
   const navigate = useNavigate();
 
   const toggleAccordion = (index: number) => {
@@ -259,7 +260,7 @@ const EmployerPage: React.FC = () => {
                   <div className="w-7 h-7 bg-blue-600/70 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Users className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-white font-bold text-sm">Provider Onboarding</span>
+                  <span className="text-white font-bold text-sm">{selectedFeatureLabel}</span>
                   <ChevronDown
                     className={`h-4 w-4 text-blue-300 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
                   />
@@ -269,21 +270,25 @@ const EmployerPage: React.FC = () => {
                 {dropdownOpen && (
                   <div className="absolute top-full left-0 mt-2 z-50 bg-[#0d1f3c] border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[240px]">
                     {[
-                      { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding", route: "/onboarding" },
-                      { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing", route: "/credentialing" },
-                      { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management", route: "/compliance" },
-                      { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping", route: "/scheduling" },
-                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet", route: "/automated-credentialing-packet" },
-                      { icon: <DollarSign className="h-4 w-4 text-blue-300" />, label: "Payer Enrollment Readiness", route: "/payer-enrollment" },
-                      { icon: <Receipt className="h-4 w-4 text-blue-300" />, label: "Reimbursement Requests", route: "/reimbursement" },
-                      { icon: <Folder className="h-4 w-4 text-blue-300" />, label: "Document Storage", route: "/document-storage" },
-                      { icon: <Building className="h-4 w-4 text-blue-300" />, label: "Facility Management", route: "/facility-management" },
-                      { icon: <MoreHorizontal className="h-4 w-4 text-blue-300" />, label: "... and more", route: "/" },
+                      { icon: <Users className="h-4 w-4 text-blue-300" />, label: "Provider Onboarding" },
+                      { icon: <FileText className="h-4 w-4 text-blue-300" />, label: "Credentialing" },
+                      { icon: <ShieldCheck className="h-4 w-4 text-blue-300" />, label: "Compliance Management" },
+                      { icon: <Calendar className="h-4 w-4 text-blue-300" />, label: "Scheduling & Timekeeping" },
+                      { icon: <Zap className="h-4 w-4 text-blue-300" />, label: "Automated Credentialing Packet" },
+                      { icon: <DollarSign className="h-4 w-4 text-blue-300" />, label: "Payer Enrollment Readiness" },
+                      { icon: <Receipt className="h-4 w-4 text-blue-300" />, label: "Reimbursement Requests" },
+                      { icon: <Folder className="h-4 w-4 text-blue-300" />, label: "Document Storage" },
+                      { icon: <Building className="h-4 w-4 text-blue-300" />, label: "Facility Management" },
+                      { icon: <MoreHorizontal className="h-4 w-4 text-blue-300" />, label: "... and more" },
                     ].map((opt, idx) => (
                       <button
                         key={idx}
                         type="button"
-                        onClick={() => { setDropdownOpen(false); navigate(opt.route); }}
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          setSelectedFeatureLabel(opt.label);
+                          toggleAccordion(idx);
+                        }}
                         className="w-full flex items-center gap-3 px-4 py-3 text-left text-white hover:bg-white/10 transition-colors border-b border-white/5 last:border-0"
                       >
                         <div className="w-7 h-7 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
