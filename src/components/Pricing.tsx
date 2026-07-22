@@ -271,75 +271,8 @@ const Pricing: React.FC = () => {
 
   // ── EMPLOYER PRICING ───────────────────────────────────────────────────────
   return (
-    <section id="pricing" className="section bg-white py-20">
+    <section id="pricing" className="section bg-white py-12 sm:py-16">
       <div className="container-ac">
-
-        {/* Financial Impact Banner */}
-        <div className="bg-[#0a1628] rounded-2xl p-8 mb-12">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-white mb-2">Estimated Financial Impact (Per 100 Providers)</h3>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
-            <div className="bg-white/10 rounded-xl p-5">
-              <p className="text-3xl font-bold text-blue-300 mb-1">5–10 min</p>
-              <p className="text-blue-200 text-sm">Admin time saved per provider</p>
-            </div>
-            <div className="bg-white/10 rounded-xl p-5">
-              <p className="text-3xl font-bold text-blue-300 mb-1">Weeks Faster</p>
-              <p className="text-blue-200 text-sm">Start providers weeks earlier (100 providers annually)*</p>
-            </div>
-            <div className="bg-white/10 rounded-xl p-5">
-              <p className="text-3xl font-bold text-blue-300 mb-1">95%</p>
-              <p className="text-blue-200 text-sm">Faster credentialing packet completion</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Employer plan card */}
-        <div className="flex justify-center mb-12">
-          <div className="w-full max-w-lg">
-            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-ac-primary">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-ac-text mb-2">Professional Plan</h3>
-                <p className="text-ac-text-light mb-6">Complete credentialing solution for anesthesia groups</p>
-              </div>
-
-              <ul className="space-y-3 mb-8">
-                {employerFeatures.map((feature, i) => (
-                  <li key={i} className="flex items-start">
-                    <Check className="h-5 w-5 text-ac-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-ac-text-light text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#request-demo-pricing" onClick={handleScrollToDemo}>
-                <Button className="w-full py-4 text-lg bg-ac-primary hover:bg-ac-primary/90 text-white">
-                  Request Demo &amp; Pricing
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-
-              <p className="text-center text-ac-text-light text-sm mt-6 leading-relaxed px-2">
-                Connect with our team to review platform capabilities, walk through a live product demo, and explore pricing options tailored to your anesthesia organization's workflow, compliance structure, and operational needs.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Security trust strip */}
-        <div className="bg-[#0a1628] rounded-2xl p-6 mb-12">
-          <div className="grid md:grid-cols-2 gap-6 text-center">
-            <div className="flex items-center justify-center gap-3">
-              <Shield className="h-6 w-6 text-blue-300 flex-shrink-0" />
-              <p className="text-white font-semibold">SOC 2 Type 2 Compliant</p>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <Zap className="h-6 w-6 text-blue-300 flex-shrink-0" />
-              <p className="text-white font-semibold">Active Penetration Testing</p>
-            </div>
-          </div>
-        </div>
 
         {/* Request Demo Form */}
         <div id="request-demo-pricing" className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 scroll-mt-[180px] md:scroll-mt-[240px]">
